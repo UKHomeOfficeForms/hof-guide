@@ -54,7 +54,7 @@ steps: {
   ...
 ```
 
-Now if you restart your server and go back to your form in the browser you will see that when you complete the `/name` step you are taken to `/address`.
+Now if you restart your server (`Ctrl+C` to stop, then run the same command again) and go back to your form in the browser you will see that when you complete the `/name` step you are taken to `/address`.
 
 ## Adding Fields
 
@@ -73,7 +73,7 @@ steps: {
 }
 ```
 
-Returning to the app in a browser and refreshing (you will also need to restart your server each time you make changes, but we won't mention this from now on. There are [tools to help](https://npmjs.com/nodemon)) you will now see these fields on the address page.
+Returning to the app in a browser and refreshing (you will need to restart your server each time you make changes - you can have this happen automatically when running locally by running `npm run start:dev` to start your server) you will now see these fields on the address page.
 
 ### Configuring Fields
 
