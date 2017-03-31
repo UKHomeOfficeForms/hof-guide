@@ -22,3 +22,8 @@ max_toc_heading_level: 6
 
 # Prevent robots from indexing (e.g. whilst in development)
 prevent_indexing: false
+
+
+css_dir: 'hof-guide/css'
+js_dir: 'hof-guide/js'
+images_dir: 'hof-guide/img'
