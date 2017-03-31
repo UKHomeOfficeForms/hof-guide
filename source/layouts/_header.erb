@@ -33,7 +33,7 @@
           <ul>
             <% config[:tech_docs][:header_links].each do |title, url| %>
               <li<% if url == current_page.url %> class="active"<% end %>>
-                <a href="<%= url %>">
+                <a href="<%= config[:http_prefix] %><%= url %>">
                   <%= title %>
                 </a>
               </li>
