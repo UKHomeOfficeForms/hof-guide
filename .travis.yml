@@ -4,7 +4,7 @@ rvm:
 - 2.2
 branches:
   only:
-  - feature/gov-uk-templates # branch to build
+  - master
 env:
   global:
   - GH_COMMIT_AUTHOR="Travis CI"
