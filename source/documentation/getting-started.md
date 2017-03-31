@@ -44,5 +44,3 @@ You can then start your app by running `docker-compose up` or `npm start` (needs
 If you open [http://localhost:8080/my-hof-form](http://localhost:8080/my-hof-form) in a browser then you should see your app. It should look something like this:
 
 ![](../images/getting-started.png)
-
-Next: [Add steps and fields to your form →](./basic-customisation).

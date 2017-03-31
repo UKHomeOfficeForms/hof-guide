@@ -1,6 +1,6 @@
 # Basic Form Customisation
 
-Now we have a [basic form created](./getting-started) then the next job is to add some steps and fields to our new form.
+Now we have a basic form created then the next job is to add some steps and fields to our new form.
 
 In the directory we just created we should now find a directory `./apps/my-hof-app`. This contains the configuration and code for our app.
 
@@ -157,5 +157,3 @@ For more `mixin` options and field configuration settings see [hof-template-mixi
 ## Customising Behaviour
 
 You will also see in your configuration that the `/confirm` step has an additional `behaviours` option. This defines some custom functionality for that step.
-
-Next: [Customising Behaviour →](#TODO)
