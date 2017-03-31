@@ -1,7 +1,7 @@
 language: ruby
 cache: bundler
 rvm:
-- 2.1.0
+- 2.2
 branches:
   only:
   - feature/gov-uk-templates # branch to build
