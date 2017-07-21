@@ -127,7 +127,7 @@ postcode: {
 }
 ```
 
-* [full list of built-in validation types](https://github.com/UKHomeOfficeForms/hof-form-controller/blob/master/lib/validation/validators.js)
+> [full list of built-in validation types](#validation-rules)
 
 #### Field Types
 
