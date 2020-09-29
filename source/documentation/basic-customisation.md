@@ -154,6 +154,28 @@ country: {
 
 For more `mixin` options and field configuration settings see [hof-template-mixins](https://npmjs.com/hof-template-mixins).
 
+#### Formatter
+
+Some text inputs will include characters you don't wish to be recorded (e.g. hyphens or spaces). To remove these with the `formatter field`.
+
+```js
+sortCode: {
+  mixin: 'textarea'
+  validate: 'required',
+  formatter: ['trim', 'hyphens']
+}
+```
+
+You can also use the formatter field to ensure the characters recorded are all in upper or lower case.
+
+```js
+brpNumber: {
+  mixin: 'textarea'
+  validate: 'required',
+  formatter: ['uppercase']
+}
+```
+
 #### Field Labels
 
 The last thing to do is to add some label content for our new fields. You will see that right now they appear with default labels like `fields.address-line-1.label`.
