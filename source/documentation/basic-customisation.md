@@ -162,7 +162,7 @@ Some text inputs will include characters you don't wish to be recorded (e.g. hyp
 sortCode: {
   mixin: 'textarea'
   validate: 'required',
-  formatter: ['trim', 'hyphens']
+  formatter: ['removehyphens']
 }
 ```
 
@@ -175,6 +175,8 @@ brpNumber: {
   formatter: ['uppercase']
 }
 ```
+
+For other `formatting` options see [hof-controller-formatters](https://github.com/UKHomeOfficeForms/hof-form-controller/blob/master/lib/formatting/formatters.js)
 
 #### Field Labels
 
