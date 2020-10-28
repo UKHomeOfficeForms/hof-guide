@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>GOV.UK Documentation</title>
+
+    <!--[if gt IE 8]><!--><link href="/hof-guide/stylesheets/screen.css" rel="stylesheet" media="screen" /><!--<![endif]-->
+    <!--[if lte IE 8]><link href="/hof-guide/stylesheets/screen-old-ie.css" rel="stylesheet" media="screen" /><![endif]-->
+
+    <link rel="canonical" href="ukhomeofficeforms.github.io/hof-guide/hof-guide/documentation/i18n">
+
+    <link href="/hof-guide/stylesheets/print.css" rel="stylesheet" media="print" />
+    <script src="/hof-guide/javascripts/application.js"></script>
+  </head>
+
+  <body>
+    <div class="app-pane">
+      <div class="app-pane__header toc-open-disabled">
+        <a href="#content" class="skip-link">Skip to main content</a>
+
+        <header class="header header--full-width">
+  <div class="header__container">
+    <div class="header__brand">
+        <a href="https://ukhomeofficeforms.github.io/hof-guide">
+          <span class="govuk-logo">
+            <img class="govuk-logo__printable-crown" src="/images/gov.uk_logotype_crown_invert_trans.png" height="32" width="36">
+            GOV.UK
+          </span>
+        <span class="header__title">
+          Home Office Forms
+            <span class="phase-banner">Beta</span>
+        </span>
+        </a>
+    </div>
+
+      <div data-module="navigation">
+        <button type="button" class="header__navigation-toggle js-nav-toggle" aria-controls="navigation" aria-label="Show or hide top level navigation">Menu</button>
+
+        <nav id="navigation" class="header__navigation js-nav" aria-label="Top Level Navigation" aria-hidden="true">
+          <ul>
+              <li>
+                <a href="/hof-guide/">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="/hof-guide/documentation/">
+                  Documentation
+                </a>
+              </li>
+          </ul>
+        </nav>
+      </div>
+  </div>
+</header>
+
+      </div>
+
+      <div id="toc-heading" class="toc-show fixedsticky">
+        <a href="#toc" class="toc-show__label js-toc-show" aria-controls="toc">
+          Table of contents <span class="toc-show__icon"></span>
+        </a>
+      </div>
+
+      <div class="app-pane__body" data-module="in-page-navigation">
+        <div class="app-pane__toc">
+          <div class="toc" data-module="table-of-contents">
+            <a href="#" class="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
+            <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading">
+              <ul>
+  <li>
+    <a href="#content-and-i18n">Content and i18n</a>
+    <ul>
+      <li>
+        <a href="#default-application-content">Default application content</a>
+        <ul>
+          <li>
+            <a href="#journey">journey</a>
+          </li>
+          <li>
+            <a href="#pages">pages</a>
+          </li>
+          <li>
+            <a href="#fields">fields</a>
+            <ul>
+              <li>
+                <a href="#options">options</a>
+              </li>
+              <li>
+                <a href="#validation-messaging">Validation messaging</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#free-text-content">Free text content</a>
+      </li>
+      <li>
+        <a href="#adding-languages">Adding languages</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+            </nav>
+          </div>
+        </div>
+
+        <div class="app-pane__content toc-open-disabled">
+          <main id="content" class="technical-documentation" data-module="anchored-headings">
+            <h1 id="content-and-i18n">Content and i18n</h1>
+<p>hof comes with multi-language support out-of-the-box.</p>
+
+<p>It uses a translation library to load content from a set of language specific json files to display in your app.</p>
+<h2 id="default-application-content">Default application content</h2>
+<p>If you have used the <code>hof-generator</code> to initialise your application you will see a translations directory at <code>./apps/my-hof-app/translations</code> with something like the following file structure:</p>
+<pre class="highlight plaintext"><code>apps/my-hof-form/translations
+└─┬ src/
+  └─┬ en/
+    ├── fields.json
+    ├── journey.json
+    └── pages.json
+</code></pre>
+<p>These json files contain the translated content for the following application features.</p>
+<h3 id="journey">journey</h3>
+<p>This contains the application-wide content that applies to all pages in your application. In most cases this is only the application title as shown in the header bar.</p>
+<h3 id="pages">pages</h3>
+<p>This contains page-specific content for each page of your app. The top level keys in <code>pages.json</code> correspond to the routes onto which your steps are mounted, as defined in your application config.</p>
+
+<p>For example, to add the content for the address step we created earlier at <code>/address</code> then you would add the following to your <code>pages.json</code>:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"header"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Personal details"</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"header"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address details"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The key for each section of the <code>pages.json</code> file should match the url path of the step.</p>
+
+<p>By default a <code>header</code> and optional <code>intro</code> are loaded for each page. If you are using a custom template for a page then you might wish to define further page-level translations here.</p>
+<h3 id="fields">fields</h3>
+<p>This contains the content for each field, with the keys as per the field names in your fields configuration.</p>
+
+<p>The properties available for each field vary slightly according to the field type, but the following are standard:</p>
+
+<ul>
+<li><code>label</code> - defines the label element text for text inputs and select boxes</li>
+<li><code>legend</code> - defines the legend text for radio and checkbox groups</li>
+<li><code>hint</code> - provides an optional help message</li>
+<li><code>options</code> - defines the options available for select elements and radio and checkbox groups</li>
+</ul>
+<h4 id="options">options</h4>
+<p>The <code>options</code> translation for a radio/checkbox group or select element should consist of a label for each option as defined in the options for the field. For example, for a yes/no radio button group:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"resident-in-uk"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"legend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Are you permanently resident in the United Kingdom?"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"yes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yes"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"no"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h4 id="validation-messaging">Validation messaging</h4>
+<p>The validation messages applicable to a field can also be defined as part of the field&rsquo;s translation by defining a <code>validation</code> object as part of the field&rsquo;s translation. For example - for an email input:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"email-address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Email address"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"validation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please enter an email address"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please enter a valid email address containing an '@' symbol"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This will then display the appropriate error message depending on the <a href="https://github.com/UKHomeOfficeForms/hof-form-controller/blob/master/lib/validation/validators.js">validation type</a> which has failed.</p>
+
+<p>Depending on the type of validator which has failed, certain variables are available for use in messages.</p>
+
+<ul>
+<li><code>maxlength</code>/<code>minlength</code>/<code>exactlength</code> - expose the value of the length parameter as a variable with the same name - e.g. <code>&quot;Please enter at least {{minlength}} characters&quot;</code></li>
+<li><code>before</code>/<code>after</code> - expose a <code>diff</code> property, which contains a stringified version of the limit - e.g. <code>&#39;5 years&#39;</code>, <code>&#39;3 months&#39;</code></li>
+</ul>
+
+<p>If you wish to define global fallback messages for particular validation types then you can create a <code>validation.json</code> which will be used if no field-specific messages are present.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This field is required"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"minlength"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter at least {{minlength}} characters"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id="free-text-content">Free text content</h2>
+<p>In cases where the content is more complex than simple strings, then free text content can be loaded in markdown format by using the <code>markdown</code> mixin in your page templates.</p>
+
+<p>In your application&rsquo;s <code>views</code> directory, create the following folder structure:</p>
+<pre class="highlight plaintext"><code>apps/my-hof-form/views
+└─┬ content/
+  └─┬ en/
+    └── free-text-content.md
+</code></pre>
+<p>In your page template you can then include <code>{{#markdown}}free-text-content{{/markdown}}</code> and the rendered markdown content of that file will be included in your page.</p>
+<h2 id="adding-languages">Adding languages</h2>
+<p>Adding support for a second language is then simply a case of duplcating your json and markdown files from an <code>en</code> directory into directories corresponding to the language code of the language you wish to add.</p>
+
+<p>So to add Welsh language support you would copy the <code>en</code> directory to a <code>cy</code> directory resulting in the following file structure:</p>
+<pre class="highlight plaintext"><code>apps/my-hof-form/translations
+└─┬ src/
+  ├─┬ en/
+  │ ├── fields.json
+  │ ├── journey.json
+  │ └── pages.json
+  └─┬ cy/
+    ├── fields.json
+    ├── journey.json
+    └── pages.json
+</code></pre>
+<p>And correspondingly for any markdown content:</p>
+<pre class="highlight plaintext"><code>apps/my-hof-form/views
+└─┬ content/
+  ├─┬ en/
+  │ └── free-text-content.md
+  └─┬ cy/
+    └── free-text-content.md
+</code></pre>
+<p>Your hof app will then detect the language the user has requested from the <code>Accept-language</code> headers on their request and serve the appropriate content.</p>
+
+          </main>
+
+          <footer class="footer">
+  <div class="footer__licence">
+    <a class="footer__licence-logo" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a>
+    <p class="footer__licence-description">All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>
+  </div>
+
+  <div class="footer__copyright">
+    <a class="footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+  </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

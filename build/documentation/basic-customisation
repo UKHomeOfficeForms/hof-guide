@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>GOV.UK Documentation</title>
+
+    <!--[if gt IE 8]><!--><link href="/hof-guide/stylesheets/screen.css" rel="stylesheet" media="screen" /><!--<![endif]-->
+    <!--[if lte IE 8]><link href="/hof-guide/stylesheets/screen-old-ie.css" rel="stylesheet" media="screen" /><![endif]-->
+
+    <link rel="canonical" href="ukhomeofficeforms.github.io/hof-guide/hof-guide/documentation/basic-customisation">
+
+    <link href="/hof-guide/stylesheets/print.css" rel="stylesheet" media="print" />
+    <script src="/hof-guide/javascripts/application.js"></script>
+  </head>
+
+  <body>
+    <div class="app-pane">
+      <div class="app-pane__header toc-open-disabled">
+        <a href="#content" class="skip-link">Skip to main content</a>
+
+        <header class="header header--full-width">
+  <div class="header__container">
+    <div class="header__brand">
+        <a href="https://ukhomeofficeforms.github.io/hof-guide">
+          <span class="govuk-logo">
+            <img class="govuk-logo__printable-crown" src="/images/gov.uk_logotype_crown_invert_trans.png" height="32" width="36">
+            GOV.UK
+          </span>
+        <span class="header__title">
+          Home Office Forms
+            <span class="phase-banner">Beta</span>
+        </span>
+        </a>
+    </div>
+
+      <div data-module="navigation">
+        <button type="button" class="header__navigation-toggle js-nav-toggle" aria-controls="navigation" aria-label="Show or hide top level navigation">Menu</button>
+
+        <nav id="navigation" class="header__navigation js-nav" aria-label="Top Level Navigation" aria-hidden="true">
+          <ul>
+              <li>
+                <a href="/hof-guide/">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="/hof-guide/documentation/">
+                  Documentation
+                </a>
+              </li>
+          </ul>
+        </nav>
+      </div>
+  </div>
+</header>
+
+      </div>
+
+      <div id="toc-heading" class="toc-show fixedsticky">
+        <a href="#toc" class="toc-show__label js-toc-show" aria-controls="toc">
+          Table of contents <span class="toc-show__icon"></span>
+        </a>
+      </div>
+
+      <div class="app-pane__body" data-module="in-page-navigation">
+        <div class="app-pane__toc">
+          <div class="toc" data-module="table-of-contents">
+            <a href="#" class="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
+            <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading">
+              <ul>
+  <li>
+    <a href="#basic-form-customisation">Basic Form Customisation</a>
+    <ul>
+      <li>
+        <a href="#adding-steps">Adding Steps</a>
+      </li>
+      <li>
+        <a href="#adding-fields">Adding Fields</a>
+        <ul>
+          <li>
+            <a href="#configuring-fields">Configuring Fields</a>
+            <ul>
+              <li>
+                <a href="#validation-rules">Validation Rules</a>
+              </li>
+              <li>
+                <a href="#field-types">Field Types</a>
+              </li>
+              <li>
+                <a href="#formatter">Formatter</a>
+              </li>
+              <li>
+                <a href="#field-labels">Field Labels</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+            </nav>
+          </div>
+        </div>
+
+        <div class="app-pane__content toc-open-disabled">
+          <main id="content" class="technical-documentation" data-module="anchored-headings">
+            <h1 id="basic-form-customisation">Basic Form Customisation</h1>
+<p>Now we have a basic form created then the next job is to add some steps and fields to our new form.</p>
+
+<p>In the directory we just created we should now find a directory <code>./apps/my-hof-form</code>. This contains the configuration and code for our app.</p>
+
+<p>Its contents should look something like this:</p>
+<pre class="highlight plaintext"><code>apps/my-hof-form/
+├── fields/
+├── translations/
+└── index.js
+</code></pre><h2 id="adding-steps">Adding Steps</h2>
+<p>Open the index.js file in a text editor. You will see a steps configuration that looks like this:</p>
+<pre class="highlight javascript"><code><span class="nx">steps</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s1">'/name'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">fields</span><span class="p">:</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">],</span>
+    <span class="nx">next</span><span class="p">:</span> <span class="s1">'/confirm'</span>
+  <span class="p">},</span>
+  <span class="s1">'/confirm'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">behaviours</span><span class="p">:</span> <span class="p">[</span><span class="s1">'complete'</span><span class="p">,</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'hof-behaviour-summary-page'</span><span class="p">)],</span>
+    <span class="nx">next</span><span class="p">:</span> <span class="s1">'/complete'</span>
+  <span class="p">},</span>
+  <span class="s1">'/complete'</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre>
+<p>This defines the steps that our form takes, and the fields which are displayed on those steps.</p>
+
+<p>The keys of the <code>steps</code> object define the urls for each step.</p>
+
+<p>The basic configuration options you need to add a step can be seen on the <code>/name</code> step. The <code>fields</code> option defines which fields will be displayed, and the <code>next</code> option defines the step to which the user is taken when they complete the step.</p>
+
+<p>To add a new step between <code>/name</code> and <code>/confirm</code> to collect a user&rsquo;s address we add a child object with a key of <code>/address</code> to the steps object.</p>
+
+<p>Since it is going between <code>/name</code> and <code>/confirm</code> it should have a <code>next</code> property of <code>/confirm</code>, and we should modify the <code>next</code> property of the <code>/name</code> step to <code>/address</code>.</p>
+<pre class="highlight javascript"><code><span class="nx">steps</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s1">'/name'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">fields</span><span class="p">:</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">],</span>
+    <span class="nx">next</span><span class="p">:</span> <span class="s1">'/address'</span>
+  <span class="p">},</span>
+  <span class="s1">'/address'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">next</span><span class="p">:</span> <span class="s1">'/confirm'</span>
+    <span class="p">},</span>
+  <span class="s1">'/confirm'</span><span class="p">:</span> <span class="p">{</span>
+  <span class="p">...</span>
+</code></pre>
+<p>Now if you restart your server (<code>Ctrl+C</code> to stop, then run the same command again) and go back to your form in the browser you will see that when you complete the <code>/name</code> step you are taken to <code>/address</code>.</p>
+<h2 id="adding-fields">Adding Fields</h2>
+<p>Now we need to add some fields to our new address step. This is as simple as adding the keys for those fields to the <code>fields</code> property of our new step object.</p>
+
+<p>We&rsquo;ll add five fields to this step to collect a full address.</p>
+<pre class="highlight javascript"><code><span class="nx">steps</span><span class="p">:</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="s1">'/address'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">fields</span><span class="p">:</span> <span class="p">[</span><span class="s1">'address-line-1'</span><span class="p">,</span> <span class="s1">'address-line-2'</span><span class="p">,</span> <span class="s1">'town'</span><span class="p">,</span> <span class="s1">'country'</span><span class="p">,</span> <span class="s1">'postcode'</span><span class="p">],</span>
+    <span class="nx">next</span><span class="p">:</span> <span class="s1">'/confirm'</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre>
+<p>Returning to the app in a browser and refreshing (you will need to restart your server each time you make changes - you can have this happen automatically when running locally by running <code>npm run start:dev</code> to start your server, which is recommended when you&rsquo;re developing an app) you will now see these fields on the address page.</p>
+<h3 id="configuring-fields">Configuring Fields</h3><h4 id="validation-rules">Validation Rules</h4>
+<p>The next job is to configure the validation rules for our new fields. The configuration for this can be found in <code>./fields/index.js</code> in our app directory.</p>
+
+<p>You will see existing configuration for the <code>name</code> field that&rsquo;s already in our app. We can add new config objects for each of our new fields to this.</p>
+<pre class="highlight javascript"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">validate</span><span class="p">:</span> <span class="s1">'required'</span>
+  <span class="p">},</span>
+  <span class="s1">'address-line-1'</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="s1">'address-line-2'</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="na">town</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="na">country</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="na">postcode</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">};</span>
+</code></pre>
+<p>We want to make all of the fields except <code>address-line-2</code> mandatory, and so can give them a <code>validate</code> property of <code>&#39;required&#39;</code>.</p>
+<pre class="highlight javascript"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">validate</span><span class="p">:</span> <span class="s1">'required'</span>
+  <span class="p">},</span>
+  <span class="s1">'address-line-1'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">validate</span><span class="p">:</span> <span class="s1">'required'</span>
+  <span class="p">},</span>
+  <span class="s1">'address-line-2'</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="na">town</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">validate</span><span class="p">:</span> <span class="s1">'required'</span>
+  <span class="p">},</span>
+  <span class="na">country</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">validate</span><span class="p">:</span> <span class="s1">'required'</span>
+  <span class="p">},</span>
+  <span class="na">postcode</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">validate</span><span class="p">:</span> <span class="s1">'required'</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+<p>Additionally, we might want to do validation on the postcode to make sure it is correctly formatted, and so we can add an additional <code>postcode</code> validator. To add multiple validators to a field, simply set the validate property to an array.</p>
+<pre class="highlight javascript"><code><span class="nx">postcode</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nl">validate</span><span class="p">:</span> <span class="p">[</span><span class="s1">'required'</span><span class="p">,</span> <span class="s1">'postcode'</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+<ul>
+<li><a href="https://github.com/UKHomeOfficeForms/hof-form-controller/blob/master/lib/validation/validators.js">full list of built-in validation types</a></li>
+</ul>
+<h4 id="field-types">Field Types</h4>
+<p>By default all fields are <code>input[type=text]</code> unless otherwise specified. In this case, we possibly want our country field to be a <code>select</code> element instead.</p>
+
+<p>To do this we add a <code>mixin</code> property of <code>select</code> to that field.</p>
+<pre class="highlight javascript"><code><span class="nx">country</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nl">mixin</span><span class="p">:</span> <span class="s1">'select'</span><span class="p">,</span>
+  <span class="nx">validate</span><span class="p">:</span> <span class="s1">'required'</span>
+<span class="p">}</span>
+</code></pre>
+<p>We also need to add some options for the field. Fortunately there is a Home Office managed list of countries, so we don&rsquo;t need to handle this ourselves. Install <code>hof-util-countries</code> from npm, and then add the following:</p>
+<pre class="highlight javascript"><code><span class="nx">country</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nl">mixin</span><span class="p">:</span> <span class="s1">'select'</span><span class="p">,</span>
+  <span class="nx">options</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'hof-util-countries'</span><span class="p">)(),</span>
+  <span class="nx">validate</span><span class="p">:</span> <span class="s1">'required'</span>
+<span class="p">}</span>
+</code></pre>
+<p>For more <code>mixin</code> options and field configuration settings see <a href="https://npmjs.com/hof-template-mixins">hof-template-mixins</a>.</p>
+<h4 id="formatter">Formatter</h4>
+<p>Some text inputs will include characters you don&rsquo;t wish to be recorded (e.g. hyphens or spaces). To remove these with the <code>formatter field</code>.</p>
+<pre class="highlight javascript"><code><span class="nx">sortCode</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nl">mixin</span><span class="p">:</span> <span class="s1">'textarea'</span>
+  <span class="nl">validate</span><span class="p">:</span> <span class="s1">'required'</span><span class="p">,</span>
+  <span class="nx">formatter</span><span class="p">:</span> <span class="p">[</span><span class="s1">'removehyphens'</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+<p>You can also use the formatter field to ensure the characters recorded are all in upper or lower case.</p>
+<pre class="highlight javascript"><code><span class="nx">brpNumber</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nl">mixin</span><span class="p">:</span> <span class="s1">'textarea'</span>
+  <span class="nl">validate</span><span class="p">:</span> <span class="s1">'required'</span><span class="p">,</span>
+  <span class="nx">formatter</span><span class="p">:</span> <span class="p">[</span><span class="s1">'uppercase'</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+<p>For other <code>formatting</code> options see <a href="https://github.com/UKHomeOfficeForms/hof-form-controller/blob/master/lib/formatting/formatters.js">hof-controller-formatters</a></p>
+<h4 id="field-labels">Field Labels</h4>
+<p>The last thing to do is to add some label content for our new fields. You will see that right now they appear with default labels like <code>fields.address-line-1.label</code>.</p>
+
+<p>To add label content for our new fields we need to set some properties in <code>./translations/src/en/fields.json</code>. You will see here that there is a label defined for the name field. We can add some more labels for our new fields as follows:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"address-line-1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"address-line-2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address line 2"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"town"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Town"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Postcode"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Returning to your app in a browser you will now see that the new address fields now use the labels we defined for them.</p>
+
+<blockquote>
+<p><a href="#fields">more information about how the content for fields can be configured</a></p>
+</blockquote>
+
+          </main>
+
+          <footer class="footer">
+  <div class="footer__licence">
+    <a class="footer__licence-logo" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a>
+    <p class="footer__licence-description">All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>
+  </div>
+
+  <div class="footer__copyright">
+    <a class="footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+  </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

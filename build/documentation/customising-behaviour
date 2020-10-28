@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>GOV.UK Documentation</title>
+
+    <!--[if gt IE 8]><!--><link href="/hof-guide/stylesheets/screen.css" rel="stylesheet" media="screen" /><!--<![endif]-->
+    <!--[if lte IE 8]><link href="/hof-guide/stylesheets/screen-old-ie.css" rel="stylesheet" media="screen" /><![endif]-->
+
+    <link rel="canonical" href="ukhomeofficeforms.github.io/hof-guide/hof-guide/documentation/customising-behaviour">
+
+    <link href="/hof-guide/stylesheets/print.css" rel="stylesheet" media="print" />
+    <script src="/hof-guide/javascripts/application.js"></script>
+  </head>
+
+  <body>
+    <div class="app-pane">
+      <div class="app-pane__header toc-open-disabled">
+        <a href="#content" class="skip-link">Skip to main content</a>
+
+        <header class="header header--full-width">
+  <div class="header__container">
+    <div class="header__brand">
+        <a href="https://ukhomeofficeforms.github.io/hof-guide">
+          <span class="govuk-logo">
+            <img class="govuk-logo__printable-crown" src="/images/gov.uk_logotype_crown_invert_trans.png" height="32" width="36">
+            GOV.UK
+          </span>
+        <span class="header__title">
+          Home Office Forms
+            <span class="phase-banner">Beta</span>
+        </span>
+        </a>
+    </div>
+
+      <div data-module="navigation">
+        <button type="button" class="header__navigation-toggle js-nav-toggle" aria-controls="navigation" aria-label="Show or hide top level navigation">Menu</button>
+
+        <nav id="navigation" class="header__navigation js-nav" aria-label="Top Level Navigation" aria-hidden="true">
+          <ul>
+              <li>
+                <a href="/hof-guide/">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="/hof-guide/documentation/">
+                  Documentation
+                </a>
+              </li>
+          </ul>
+        </nav>
+      </div>
+  </div>
+</header>
+
+      </div>
+
+      <div id="toc-heading" class="toc-show fixedsticky">
+        <a href="#toc" class="toc-show__label js-toc-show" aria-controls="toc">
+          Table of contents <span class="toc-show__icon"></span>
+        </a>
+      </div>
+
+      <div class="app-pane__body" data-module="in-page-navigation">
+        <div class="app-pane__toc">
+          <div class="toc" data-module="table-of-contents">
+            <a href="#" class="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
+            <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading">
+              <ul>
+  <li>
+    <a href="#customising-behaviour">Customising Behaviour</a>
+    <ul>
+      <li>
+        <a href="#the-request-pipeline">The request pipeline</a>
+        <ul>
+          <li>
+            <a href="#get">GET</a>
+          </li>
+          <li>
+            <a href="#post">POST</a>
+            <ul>
+              <li>
+                <a href="#configure">configure</a>
+              </li>
+              <li>
+                <a href="#getvalues">getValues</a>
+              </li>
+              <li>
+                <a href="#locals">locals</a>
+              </li>
+              <li>
+                <a href="#render">render</a>
+              </li>
+              <li>
+                <a href="#process">process</a>
+              </li>
+              <li>
+                <a href="#validate">validate</a>
+              </li>
+              <li>
+                <a href="#savevalues">saveValues</a>
+              </li>
+              <li>
+                <a href="#successhandler">successHandler</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#sessions">Sessions</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#behaviours">Behaviours</a>
+        <ul>
+          <li>
+            <a href="#writing-a-behaviour">Writing a behaviour</a>
+          </li>
+          <li>
+            <a href="#configurable-behaviours">Configurable behaviours</a>
+          </li>
+          <li>
+            <a href="#completion-behaviour">Completion behaviour</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+            </nav>
+          </div>
+        </div>
+
+        <div class="app-pane__content toc-open-disabled">
+          <main id="content" class="technical-documentation" data-module="anchored-headings">
+            <h1 id="customising-behaviour">Customising Behaviour</h1>
+<p>You will also see in your configuration that the <code>/confirm</code> step has an additional <code>behaviours</code> option. This defines some custom functionality for that step.</p>
+
+<p>&ldquo;Behaviours&rdquo; are used to extend the default request pipeline from the <a href="https://github.com/ukhomeofficeforms/hof-form-controller">core form controller</a> with custom functionality for you app.</p>
+
+<p>Before writing your own behaviours it is helpful to understand the request/response flow, and what the different methods are used for.</p>
+<h2 id="the-request-pipeline">The request pipeline</h2>
+<p>The underlying controller that handles the form GET/POST pipeline consists of a number of stages for form rendering and processing/validation that can be extended to perform advanced custom behaviour for your forms.</p>
+
+<p>All of the pipeline methods are passed the request and response objects as arguments. Unless specified below, methods are also passed a callback as a third argument, which should be called with an <code>Error</code> if applicable.</p>
+<h3 id="get">GET</h3>
+<p>The request/response flow for a GET request to a form step is as follows:</p>
+<pre class="highlight plaintext"><code>configure ⇒ getValues ⇒ locals ⇒ render
+</code></pre><h3 id="post">POST</h3>
+<p>The request/response flow for a POST request to a form step is as follows:</p>
+<pre class="highlight plaintext"><code>configure ⇒ process ⇒ validate ⇒ saveValues ⇒ successHandler
+</code></pre><h4 id="configure"><code>configure</code></h4>
+<p>The configure method is used on both GET and POST requests and can be used to override the global form configuration with request/session specifc details.</p>
+
+<p>The initial controller configuration - as defined in your steps file - is available on <code>req.form.options</code> and can be written to or modified with any custom step or field configuration.</p>
+<h4 id="getvalues"><code>getValues</code></h4>
+<p>Retrieves any values required for this step. By default this is a copy of the data stored on the user&rsquo;s session.</p>
+
+<p>This method is passed a callback as a third argument, which should be called with an error if required and the values as a second argument. Any values passed to the callback are written to <code>req.form.values</code>.</p>
+<h4 id="locals"><code>locals</code></h4>
+<p>Loads any data which is required to render the page template. Any values should be returned synchronously as a set of key-value pairs.</p>
+<h4 id="render"><code>render</code></h4>
+<p>Uses Mustache to render the step html to the user. It is unlikely that you would need to modify this method unless you wish to return non-html - e.g. if rendering a PDF file.</p>
+<h4 id="process"><code>process</code></h4>
+<p>Normalises the input data from <code>req.body</code> and writes any data to <code>req.form.values</code> to be consumed by later steps.</p>
+<h4 id="validate"><code>validate</code></h4>
+<p>Perform any custom validation required. By default all the fields are validated according to the rules defined in the field configuration (or custom rules defined in <code>configure</code>).</p>
+<h4 id="savevalues"><code>saveValues</code></h4>
+<p>Saves the processed values from the form to persistent storage for later retrieval. By default this writes the values from <code>req.form.values</code> to the user&rsquo;s session.</p>
+<h4 id="successhandler"><code>successHandler</code></h4>
+<p>Performs post-success actions on the form. By default this redirects the user to the subsequent form step.</p>
+<h3 id="sessions">Sessions</h3>
+<p>The user&rsquo;s session can be accessed at any time via <code>req.sessionModel</code>, with <code>get</code>, <code>set</code>, and <code>unset</code> methods available.</p>
+<h2 id="behaviours">Behaviours</h2>
+<p>To add a custom behaviour to a form step, you can set a <code>behaviours</code> option on the step configuration (note that this <em>cannot</em> be done dynamically, and must be hard-coded in the step configuration).</p>
+
+<p>Behaviours can either be loaded from external modules (for example <a href="https://github.com/UKHomeOfficeForms/hof-behaviour-summary-page">hof-behaviour-summary-page</a> or <a href="https://github.com/UKHomeOfficeForms/hof-behaviour-address-lookup">hof-behaviour-address-lookup</a>) or from files within your own codebase. The patterns are the same in each case.</p>
+
+<p>The <code>behaviours</code> option can be set with either a single behaviour directly, or as an array of behaviours which are composed upon one another. If multiple behaviours are passed then they are composed onto the base controller from left-to-right, so each behaviour will have methods from the previous behaviours available as <code>super</code>.</p>
+<h3 id="writing-a-behaviour">Writing a behaviour</h3>
+<p>The simplest form of a behaviour is a <a href="https://www.npmjs.com/package/mixwith#define-a-mixin">mixin function</a>, which takes a class as an argument, and extends it with custom methods.</p>
+<pre class="highlight javascript"><code><span class="c1">// my-behaviour.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">superclass</span> <span class="o">=&gt;</span> <span class="kr">class</span> <span class="kr">extends</span> <span class="nx">superclass</span> <span class="p">{</span>
+  <span class="nx">configure</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// do some custom configuration here</span>
+      <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+<p>You can then apply this behaviour to a step as follows:</p>
+<pre class="highlight javascript"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">steps</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'/my-step'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">behaviours</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./my-behaviour'</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre><h3 id="configurable-behaviours">Configurable behaviours</h3>
+<p>In most cases, we will want custom behaviours to be configurable - for example, the <a href="https://github.com/UKHomeOfficeForms/hof-behaviour-emailer">emailer behaviour</a> - so the same behaviour can be re-used with different options.</p>
+
+<p>In this case we can define our behaviour as a function which receives configuration options and returns a mixin function.</p>
+<pre class="highlight javascript"><code><span class="c1">// reverse-a-key.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">config</span> <span class="o">=&gt;</span> <span class="nx">superclass</span> <span class="o">=&gt;</span> <span class="kr">class</span> <span class="kr">extends</span> <span class="nx">superclass</span> <span class="p">{</span>
+  <span class="nx">saveValues</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">req</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="s2">`</span><span class="p">${</span><span class="nx">config</span><span class="p">.</span><span class="nx">key</span><span class="p">}</span><span class="s2">-reversed`</span><span class="p">]</span> <span class="o">=</span> <span class="nx">reverse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">config</span><span class="p">.</span><span class="nx">key</span><span class="p">]);</span>
+    <span class="kr">super</span><span class="p">.</span><span class="nx">saveValues</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+<p>You can then apply this behaviour to a step as follows:</p>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">reverse</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./reverse-a-key'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">steps</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'/my-step'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">fields</span><span class="p">:</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">],</span>
+      <span class="na">behaviours</span><span class="p">:</span> <span class="nx">reverse</span><span class="p">({</span> <span class="na">key</span><span class="p">:</span> <span class="s1">'name'</span> <span class="p">})</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre><h3 id="completion-behaviour">Completion behaviour</h3>
+<p>In addition to any custom behaviours, hof ships with a &ldquo;complete&rdquo; behaviour out of the box. Adding this behaviour to a step means that once it has been successfully submitted the user&rsquo;s session is marked as complete, and they cannot go back to earlier steps, only access the immediately subsequent step.</p>
+
+<p>This can be set on a step by simply setting the string <code>&#39;complete&#39;</code> as a behaviour. It would be expected that this would normally run in conjunction with a behaviour that extends <code>saveValues</code> to submit the user&rsquo;s application.</p>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">submit</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./my-submission-behaviour'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">steps</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'/declaration'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">behaviours</span><span class="p">:</span> <span class="p">[</span><span class="s1">'complete'</span><span class="p">,</span> <span class="nx">submit</span><span class="p">],</span>
+      <span class="na">next</span><span class="p">:</span> <span class="s1">'/confirmation'</span>
+    <span class="p">},</span>
+    <span class="s1">'/confirmation'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="c1">// only this step can be accessed once "declaration" step is submitted</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+          </main>
+
+          <footer class="footer">
+  <div class="footer__licence">
+    <a class="footer__licence-logo" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a>
+    <p class="footer__licence-description">All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>
+  </div>
+
+  <div class="footer__copyright">
+    <a class="footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+  </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>
