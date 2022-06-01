@@ -13,4 +13,8 @@ jobs:
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install --frozen-lockfile
-      - run: npm run deploy
+      - uses: enriikke/gatsby-gh-pages-action@v2
+        with:
+          access-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-branch: gh-pages
+          gatsby-args: --prefix-paths
