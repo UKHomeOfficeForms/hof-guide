@@ -8,6 +8,6 @@ jobs:
       - uses: actions/checkout@v2.2.0
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
-          access-token: ${{ secrets.GITHUB_TOKEN }}
+          access-token: ${{ secrets.DOCS_ACCESS_TOKEN }}
           deploy-branch: gh-pages
           gatsby-args: --prefix-paths
