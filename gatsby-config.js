@@ -1,31 +1,59 @@
+const config = {
+  start_url: `/`,
+  background_color: `#663399`,
+  theme_color: `#663399`,
+};
+
 module.exports = {
   siteMetadata: {
-    title: `Home Office Forms Docs`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `Gatsby Wiki Template`,
+    description: `Markdown based wiki site`,
+    author: `@cephalization`,
   },
-  plugins: ["gatsby-plugin-sass", {
-    resolve: 'gatsby-plugin-google-analytics',
-    options: {
-      "trackingId": ""
-    }
-  }, "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
-    resolve: 'gatsby-plugin-manifest',
-    options: {
-      "icon": "src/images/icon.png"
-    }
-  }, "gatsby-plugin-mdx", "gatsby-transformer-remark", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
+  plugins: [
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-page-creator`,
+      options: {
+        path: `${__dirname}/src/pages`,
+      },
     },
-    __key: "images"
-  }, {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "pages",
-      "path": "./src/pages/"
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown`,
+        path: `./wiki`,
+      },
     },
-    __key: "pages"
-  }]
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `gatsby-starter-default`,
+        icon: `${__dirname}/src/images/gatsby-icon.png`,
+        short_name: `starter`,
+        start_url: config.start_url,
+        background_color: config.background_color,
+        theme_color: config.theme_color,
+        display: `minimal-ui`,
+      },
+    },
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.app/offline
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'gatsby-wiki-template',
+        icon: `${__dirname}/src/images/gatsby-icon.png`,
+        short_name: 'gatsby-wiki',
+        start_url: config.start_url,
+        background_color: config.background_color,
+        theme_color: config.theme_color,
+        display: `standalone`,
+      },
+    },
+    'gatsby-plugin-offline',
+  ],
 };
