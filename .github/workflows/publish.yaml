@@ -1,9 +1,9 @@
 name: Publish to gh-pages
-name: Automate_Tag
 on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/heads/master')
     steps:
       - uses: actions/checkout@v2.2.0
       - uses: actions/setup-node@v1
