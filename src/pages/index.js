@@ -13,7 +13,7 @@ const IndexPage = () => (
         👋
       </span>
     </h1>
-    <p>This is your new gatsby-driven wiki.</p>
+    <p>This is your new gatsby-driven wiki..</p>
     <p>
       Add some new pages by following the instructions at the{' '}
       <Link to="/about">About</Link> page!

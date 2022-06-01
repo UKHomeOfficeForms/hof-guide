@@ -5,6 +5,7 @@ const config = {
 };
 
 module.exports = {
+  pathPrefix: '/home-office-forms-docs',
   siteMetadata: {
     title: `Gatsby Wiki Template`,
     description: `Markdown based wiki site`,
