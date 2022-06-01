@@ -6,13 +6,6 @@ jobs:
     if: startsWith(github.ref, 'refs/heads/master')
     steps:
       - uses: actions/checkout@v2.2.0
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-      - uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: install --frozen-lockfile
       - uses: enriikke/gatsby-gh-pages-action@v2
         with:
           access-token: ${{ secrets.GITHUB_TOKEN }}
