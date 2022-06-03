@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import { parseLinksToTree } from '../utils/parse-links-to-tree';
 
 import { NavTree } from './navtree';
-import './sidebar.css';
+import '../stylesheets/sidebar.scss';
 
 const Sidebar = ({ className }) => (
   <StaticQuery
