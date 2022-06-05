@@ -38,7 +38,6 @@ const Layout = ({ children }) => (
                     </nav>
                   </div>
                 </div>
-
                 <div className="content-flex">
                   {children}
                   <hr />
@@ -48,6 +47,7 @@ const Layout = ({ children }) => (
           </main>
         </div>
         <Footer/>
+        <button id="scroll-btn" className="sidebar-btns" title="Scroll to top"></button>
         <script src="./govuk.js"></script>
         <script>document.documentElement.classList.remove('no-js')</script>
       </>

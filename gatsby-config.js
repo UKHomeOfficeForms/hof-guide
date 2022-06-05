@@ -73,6 +73,18 @@ module.exports = {
      options: {
        plugins: [
          {
+            resolve: `gatsby-remark-table-of-contents`,
+            options: {
+              exclude: "Table of Contents",
+              tight: false,
+              ordered: false,
+              fromHeading: 1,
+              toHeading: 6,
+              className: "table-of-contents"
+            },
+          },
+         `gatsby-remark-autolink-headers`,
+         {
            resolve: 'gatsby-remark-code-buttons',
            options: {
              buttonText: `Copy ->`,
@@ -80,7 +92,7 @@ module.exports = {
              toasterText: 'Copied!'
            }
          },
-         'gatsby-remark-code-titles',
+        'gatsby-remark-code-titles',
          {
            resolve: `gatsby-remark-prismjs`,
            options: {

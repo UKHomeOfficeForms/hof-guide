@@ -249,13 +249,16 @@ class NavTree extends Component {
 
     return (
       <div className={this.props.className}>
+        <a id="homepage" href='/'><strong>Homepage</strong></a><br></br><br></br>
         <h4
           style={{
-            marginTop: '-1.5rem',
-            marginLeft: '1.45rem'
+            margin: '-0.5rem 0rem 0rem 1.45rem',
+            color: '#005ea5',
+            fontFamily: '"GDS Transport", arial, sans-serif',
+            textDecoration: 'underline'
           }}
         >
-        Table of Contents
+        Contents
         </h4>
         <TreeView
           data={tree}

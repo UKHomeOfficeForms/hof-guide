@@ -1,6 +1,6 @@
 ---
 title: Test
-path: '/test'
+path: '/Testing/test'
 ---
 
 ## This page tests that multiple files in same dir does not break anything
