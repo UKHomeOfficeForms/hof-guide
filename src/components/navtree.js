@@ -249,7 +249,13 @@ class NavTree extends Component {
 
     return (
       <div className={this.props.className}>
-        <a id="homepage" href='/'><strong>Homepage</strong></a><br></br><br></br>
+        <Link
+          id="homepage"
+          to="/"
+        >
+          <strong>Homepage</strong>
+        </Link>
+        <br></br><br></br>
         <h4
           style={{
             margin: '-0.5rem 0rem 0rem 1.45rem',
