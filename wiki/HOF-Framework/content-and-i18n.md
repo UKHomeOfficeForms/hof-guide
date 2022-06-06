@@ -1,5 +1,5 @@
 ---
-title: Content & i18n
+title: Content and i18n
 path: '/HOF_Framework/content-and-i18n'
 ---
 ```toc
