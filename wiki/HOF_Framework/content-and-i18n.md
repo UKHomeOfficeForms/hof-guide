@@ -1,6 +1,5 @@
 ---
 title: Content and i18n
-path: '/HOF_Framework/content-and-i18n'
 ---
 ```toc
 # This code block gets replaced with the Table Of Contents

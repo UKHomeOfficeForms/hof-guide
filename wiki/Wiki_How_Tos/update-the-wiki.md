@@ -1,6 +1,5 @@
 ---
 title: Update The Wiki
-path: '/Wiki_How_Tos/update-the-wiki'
 ---
 To renew the HOF Guide site itself with the latest Gov UK Javascript & Styling.<br></br>
 

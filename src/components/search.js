@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Index } from "elasticlunr"
 import { Link } from "gatsby"
+import { constructPageUrl } from '../utils/parse-links-to-tree'
 
 // Search component
 export default class Search extends Component {
@@ -14,12 +15,12 @@ export default class Search extends Component {
 
   render() {
     return (
-      <div class='search-bar'>
+      <div className='search-bar'>
         <input type="text" value={this.state.query} onChange={this.search} placeholder="Search..."/>
         <ul>
           {this.state.results.map(page => (
             <li key={page.id}>
-              <Link to={"/" + page.path}>{page.title}</Link>
+              <Link to={constructPageUrl(page)}>{page.title}</Link>
             </li>
           ))}
         </ul>
@@ -35,8 +36,6 @@ export default class Search extends Component {
   search = evt => {
     const query = evt.target.value
     this.index = this.getOrCreateIndex()
-    console.log(this.index.search(query, { expand: true })
-      .map(({ ref }) => this.index.documentStore.getDoc(ref)));
     this.setState({
       query,
       // Query the index with search string to get an [] of IDs

@@ -1,6 +1,5 @@
 ---
 title: Basic Form Customisation
-path: '/HOF_Framework/basic-form-customisation'
 ---
 ```toc
 # This code block gets replaced with the Table Of Contents

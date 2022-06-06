@@ -1,3 +1,4 @@
+ /* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
@@ -28,14 +29,14 @@ const Layout = ({ children }) => (
       <>
         <Header/>
         <SearchBar/>
-        <div class="govuk-width-container ">
-          <main class="govuk-main-wrapper " id="main-content" role="main">
-            <div class="govuk-grid-row">
+        <div className="govuk-width-container ">
+          <main className="govuk-main-wrapper " id="main-content" role="main">
+            <div className="govuk-grid-row">
               <div className="container-flex">
-                <div class="app-pane__toc">
-                  <div class="toc" data-module="table-of-contents">
-                    <a href="#" class="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
-                    <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading">
+                <div className="app-pane__toc">
+                  <div className="toc" data-module="table-of-contents">
+                    <a href="#" className="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
+                    <nav id="toc" className="js-toc-list toc__list" aria-labelledby="toc-heading">
                       <Sidebar className="sidebar-flex" />
                     </nav>
                   </div>

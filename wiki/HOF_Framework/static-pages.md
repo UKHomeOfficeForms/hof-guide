@@ -1,6 +1,5 @@
 ---
 title: Static Pages
-path: '/HOF_Framework/static-pages'
 ---
 ```toc
 # This code block gets replaced with the Table Of Contents

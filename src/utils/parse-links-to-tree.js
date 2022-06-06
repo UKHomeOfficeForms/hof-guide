@@ -28,19 +28,20 @@
  * ]
  */
 const parseLinksToTree = pages => {
-  console.log(pages);
-  const navTree = pages.reduce(
-    (tree, { node: { frontmatter: page } }) => {
+  const mergedPages = pages.map(page => {
+    const mergedFields = Object.assign({}, page.node.fields, page.node.frontmatter);
+    mergedFields.path = constructPageUrl(mergedFields);
+    return mergedFields;
+  });
+
+  const navTree = mergedPages.reduce(
+    (tree, page) => {
       // Split the uri into its directories
       const uri = page.path.replace(/_/g, ' ').split('/');
       const root = tree[0];
-
       // Keep track of current directory when building the tree
       let pwd = root;
-      console.log('**********');
-      console.log(pwd.links);
-      console.log(uri);
-      console.log('**********');
+
       if (uri.length > 2) {
         // Iterate through each segment of the uri, creating directories and links
         for (let i = 1; i < uri.length; i++) {
@@ -84,4 +85,16 @@ const parseLinksToTree = pages => {
   return navTree;
 };
 
-export { parseLinksToTree };
+const constructPageUrl = page => {
+  const matterPath = page.path;
+  let parentDir = page.slug.split('/').filter(uri => uri);
+  parentDir.pop();
+  parentDir = parentDir.join('/');
+
+  return matterPath ? `/${parentDir}${matterPath}` : page.slug.slice(0, -1);
+};
+
+module.exports = {
+  parseLinksToTree,
+  constructPageUrl
+};

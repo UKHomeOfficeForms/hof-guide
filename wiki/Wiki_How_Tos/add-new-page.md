@@ -1,6 +1,5 @@
 ---
 title: Add New Page
-path: '/Wiki_How_Tos/add-new-page'
 tags: ["add-page"]
 ---
 

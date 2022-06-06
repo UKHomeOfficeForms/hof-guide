@@ -18,8 +18,8 @@ export default function Template({ data }) {
 }
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query BlogPostByTitle($title: String!) {
+    markdownRemark(frontmatter: { title: { eq: $title } }) {
       html
       frontmatter {
         path

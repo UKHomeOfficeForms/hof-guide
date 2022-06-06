@@ -23,8 +23,9 @@ module.exports = {
           MarkdownRemark: {
             title: node => node.frontmatter.title,
             tags: node => node.frontmatter.tags,
+            html: node => node.internal.content,
             path: node => node.frontmatter.path,
-            html: node => node.internal.content
+            slug: node => node.fields.slug
           },
         },
         // Optional filter to limit indexed nodes

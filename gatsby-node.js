@@ -7,6 +7,7 @@ const path = require('path');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
 const { createFilePath } = require(`gatsby-source-filesystem`);
+const { constructPageUrl } = require('./src/utils/parse-links-to-tree');
 
 exports.onPreBootstrap = ({ store }) => {
   const { program } = store.getState();
@@ -44,7 +45,9 @@ exports.createPages = ({ actions, graphql }) => {
               slug
             }
             frontmatter {
+              title
               path
+              tags
             }
           }
         }
@@ -56,14 +59,13 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      let slugFields = node.fields.slug.split('/');
-      slugFields.pop();
-      slugFields = slugFields.join('/');
-      console.log(`${slugFields}/${node.frontmatter.path}`);
+      const mergedFields = Object.assign({}, node.fields, node.frontmatter);
+      
       createPage({
-        path: `${slugFields}/${node.frontmatter.path}`,
+        path: constructPageUrl(mergedFields),
         component: wikiPostTemplate,
         context: {
+          title: node.frontmatter.title,
           slug: node.fields.slug,
           tags: node.frontmatter.tags
         }, // additional data can be passed via context
@@ -71,18 +73,3 @@ exports.createPages = ({ actions, graphql }) => {
     });
   });
 };
-
-// // Process this site as a theme when installed as a package from npm
-// exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-//   actions.setWebpackConfig({
-//     module: {
-//       rules: [
-//         {
-//           test: /\.js$/,
-//           include: path.dirname(require.resolve('gatsby-theme-wiki')),
-//           use: [loaders.js()],
-//         },
-//       ],
-//     },
-//   });
-// };
