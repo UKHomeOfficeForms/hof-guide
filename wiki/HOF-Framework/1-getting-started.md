@@ -1,6 +1,6 @@
 ---
 title: — Getting Started —
-path: '/HOF Framework/1-getting-started'
+path: '/HOF_Framework/1-getting-started'
 ---
 ```toc
 ```

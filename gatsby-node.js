@@ -6,6 +6,7 @@
 const path = require('path');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onPreBootstrap = ({ store }) => {
   const { program } = store.getState();
@@ -15,6 +16,19 @@ exports.onPreBootstrap = ({ store }) => {
     mkdirp.sync(dir);
   }
 };
+
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
+
+  if (node.internal.type === `MarkdownRemark`) {
+    const value = createFilePath({ node, getNode })
+    createNodeField({
+      name: `slug`,
+      node,
+      value,
+    })
+  }
+}
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
@@ -26,6 +40,9 @@ exports.createPages = ({ actions, graphql }) => {
       allMarkdownRemark(limit: 1000) {
         edges {
           node {
+            fields {
+              slug
+            }
             frontmatter {
               path
             }
@@ -39,10 +56,17 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      let slugFields = node.fields.slug.split('/');
+      slugFields.pop();
+      slugFields = slugFields.join('/');
+      console.log(`${slugFields}/${node.frontmatter.path}`);
       createPage({
-        path: node.frontmatter.path,
+        path: `${slugFields}/${node.frontmatter.path}`,
         component: wikiPostTemplate,
-        context: {}, // additional data can be passed via context
+        context: {
+          slug: node.fields.slug,
+          tags: node.frontmatter.tags
+        }, // additional data can be passed via context
       });
     });
   });

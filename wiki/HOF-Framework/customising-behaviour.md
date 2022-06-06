@@ -1,6 +1,6 @@
 ---
 title: Customising Behaviour
-path: '/HOF Framework/customising-behaviour'
+path: '/HOF_Framework/customising-behaviour'
 ---
 ```toc
 # This code block gets replaced with the Table Of Contents

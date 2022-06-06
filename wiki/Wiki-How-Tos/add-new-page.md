@@ -1,6 +1,7 @@
 ---
 title: Add New Page
-path: '/Wiki How Tos/add-new-page'
+path: '/Wiki_How_Tos/add-new-page'
+tags: ["add-page"]
 ---
 
 ## Creating wiki posts

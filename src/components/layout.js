@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import Sidebar from './sidebar';
 import Header from './header';
 import Footer from './footer';
+import SearchBar from './search-bar';
 
 import '@progress/kendo-theme-default/dist/all.css';
 import '../stylesheets/govuk.scss';
@@ -26,6 +27,7 @@ const Layout = ({ children }) => (
     render={data => (
       <>
         <Header/>
+        <SearchBar/>
         <div class="govuk-width-container ">
           <main class="govuk-main-wrapper " id="main-content" role="main">
             <div class="govuk-grid-row">
@@ -34,7 +36,7 @@ const Layout = ({ children }) => (
                   <div class="toc" data-module="table-of-contents">
                     <a href="#" class="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
                     <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading">
-                        <Sidebar className="sidebar-flex" />
+                      <Sidebar className="sidebar-flex" />
                     </nav>
                   </div>
                 </div>

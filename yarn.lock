@@ -1104,6 +1104,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@gatsby-contrib/gatsby-plugin-elasticlunr-search@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@gatsby-contrib/gatsby-plugin-elasticlunr-search/-/gatsby-plugin-elasticlunr-search-3.0.2.tgz#f60462f5f6283af170a22b28e2f159dd936f6a7b"
+  integrity sha512-GQUwjZ6/Q6jFl5Kk1zDtquQewbjX4dsLE8g0/V/aA7s5Mvtc7plCYtvSdarqkJdfC41VC31NubHseDqUkoKeRA==
+  dependencies:
+    elasticlunr "^0.9.5"
+
 "@gatsbyjs/parcel-namer-relative-to-cwd@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@gatsbyjs/parcel-namer-relative-to-cwd/-/parcel-namer-relative-to-cwd-1.0.0.tgz#18efb6168e5a554647ae87e33d77b2e785580d35"
@@ -5041,6 +5048,11 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
+
+elasticlunr@^0.9.5:
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/elasticlunr/-/elasticlunr-0.9.5.tgz#65541bb309dddd0cf94f2d1c8861b2be651bb0d5"
+  integrity sha512-5YM9LFQgVYfuLNEoqMqVWIBuF2UNCA+xu/jz1TyryLN/wmBcQSb+GNAwvLKvEpGESwgGN8XA1nbLAt6rKlyHYQ==
 
 electron-to-chromium@^1.4.118:
   version "1.4.143"
