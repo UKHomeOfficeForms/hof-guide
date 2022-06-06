@@ -5,8 +5,11 @@
   "description": "home-office-forms-docs",
   "author": "Alexander Swann",
   "keywords": [
-    "gatsby"
+    "home office forms", "hof guide"
   ],
+  "engines": {
+    "node": "^16.15.0"
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
