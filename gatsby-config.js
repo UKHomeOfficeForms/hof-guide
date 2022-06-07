@@ -7,7 +7,7 @@ const manifestConfig = {
   theme_color: `#663399`,
 };
 
-module.exports = Obejct.assign({}, config, {
+module.exports = Object.assign({}, config, {
   plugins: [
     {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
