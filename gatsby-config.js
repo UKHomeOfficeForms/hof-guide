@@ -1,13 +1,7 @@
 
 const config = require('./config');
 
-const manifestConfig = {
-  start_url: `/`,
-  background_color: `#663399`,
-  theme_color: `#663399`,
-};
-
-module.exports = Object.assign({}, config, {
+module.exports = Object.assign({}, config.gatsbyConfig, {
   plugins: [
     {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
@@ -64,9 +58,9 @@ module.exports = Object.assign({}, config, {
         name: `${config.appName} Default`,
         icon: 'src/images/favicon.png',
         short_name: `${config.appName} Starter`,
-        start_url: manifestConfig.start_url,
-        background_color: manifestConfig.background_color,
-        theme_color: manifestConfig.theme_color,
+        start_url: config.start_url,
+        background_color: config.background_color,
+        theme_color: config.theme_color,
         display: `minimal-ui`,
       },
     },
@@ -78,9 +72,9 @@ module.exports = Object.assign({}, config, {
         name: config.appName,
         icon: 'src/images/favicon.png',
         short_name: config.appName,
-        start_url: manifestConfig.start_url,
-        background_color: manifestConfig.background_color,
-        theme_color: manifestConfig.theme_color,
+        start_url: config.start_url,
+        background_color: config.background_color,
+        theme_color: config.theme_color,
         display: `standalone`,
       },
     },
