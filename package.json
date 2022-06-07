@@ -2,7 +2,7 @@
   "name": "hof-guide",
   "version": "1.0.0",
   "private": true,
-  "description": "home-office-forms-docs",
+  "description": "A guide used as documentation for the Home Office Forms (HOF) framework",
   "author": "Alexander Swann",
   "keywords": [
     "home office forms", "hof guide"

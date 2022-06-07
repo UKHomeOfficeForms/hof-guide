@@ -1,16 +1,7 @@
-const config = {
-  start_url: `/`,
-  background_color: `#663399`,
-  theme_color: `#663399`,
-};
 
-module.exports = {
-  pathPrefix: '/home-office-forms-docs',
-  siteMetadata: {
-    title: `Home Office Forms (HOF) Guide`,
-    description: `Markdown based wiki site for the Home Office Forms framework`,
-    author: `@cephalization`,
-  },
+const config = require('./config');
+
+module.exports = Object.assign({}, config, {
   plugins: [
     {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
@@ -183,4 +174,4 @@ module.exports = {
    },
     'gatsby-plugin-offline'
   ],
-};
+});
