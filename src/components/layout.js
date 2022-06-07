@@ -1,7 +1,8 @@
  /* eslint-disable */
 import React from 'react';
+import Helmet from "react-helmet"
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql, withPrefix } from 'gatsby';
 
 import Sidebar from './sidebar';
 import Header from './header';
@@ -51,7 +52,10 @@ const Layout = ({ children }) => (
         </div>
         <Footer/>
         <button id="scroll-btn" className="sidebar-btns" title="Scroll to top"></button>
-        <script src="./govuk.js"></script>
+        <Helmet>
+            <script src={withPrefix('govuk.js')} type="text/javascript" />
+            <script src={withPrefix('smooth-scroll-anchors.js')} type="text/javascript" />
+        </Helmet>
         <script>document.documentElement.classList.remove('no-js')</script>
       </>
     )}
