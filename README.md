@@ -1,12 +1,27 @@
 ## 🚀 Quick start
 
+### Repo Setup
+
 1.  Fork/clone this repo and stick it into the relevant repo space on Github.
 2.  Add a repository secret called 'DOCS_ACCESS_TOKEN' which has basic read/write access to the repo. If you are unsure on how to set this up then refer to Github's docs on [How To Setup a Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). Once setup, go to your repo's 'Settings' and add the secret under the left hand side Settings navigation bar under 'Security -> Actions'.
-    [Security Actions Settings](static/images/readme/where-to-add-repo-secret.png)
-    [Repository Secret Example](static/images/readme/add-repo-secret.png)
+    
+    **Security Actions Settings**
+
+    <img src="static/images/readme/where-to-add-repo-secret.png" width=70% title="Security Actions Settings" alt="Security Actions Settings"/>
+
+    **Repository Secret Example**
+
+    <img src="static/images/readme/add-repo-secret.png" width=70% title="Repository Secret Example" alt="Repository Secret Example"/>
+
 3.  Setup Github Pages by going to 'Code and automation -> Pages' under the repo's Settings. Then turn on Github pages by specifying the branch to use for the static site (Default: 'gh-pages'; root '/' directory) and you should get a confirmation of the site address your static site will be deployed to.
-    [Github Pages Settings](static/images/readme/where-to-setup-gh.png)
-    [Default Configuration Setup for Github Page](static/images/readme/configure-gh.png)
+    
+    **Github Pages Settings**
+    
+    <img src="static/images/readme/where-to-setup-gh.png" width=30% title="Github Pages Settings" alt="Github Pages Settings"/>
+    
+    **Default Configuration Setup for Github Page**
+    
+    <img src="static/images/readme/configure-gh.png" width=40% title="Default Configuration Setup for Github Page" alt="Default Configuration Setup for Github Page"/>
 
 ### Local Development
 
