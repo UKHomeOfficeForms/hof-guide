@@ -1,16 +1,13 @@
-const config = {
+
+const config = reuire('./config');
+
+const manifestConfig = {
   start_url: `/`,
   background_color: `#663399`,
   theme_color: `#663399`,
 };
 
-module.exports = {
-  pathPrefix: '/hof-guide',
-  siteMetadata: {
-    title: `Home Office Forms (HOF) Guide`,
-    description: `Markdown based wiki site for the Home Office Forms framework`,
-    author: `@cephalization`,
-  },
+module.exports = Obejct.assign({}, config, {
   plugins: [
     {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
@@ -65,12 +62,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `hof-docs-starter-default`,
+        name: `hof-guide-starter-default`,
         icon: 'src/images/favicon.png',
         short_name: `starter`,
-        start_url: config.start_url,
-        background_color: config.background_color,
-        theme_color: config.theme_color,
+        start_url: manifestConfig.start_url,
+        background_color: manifestConfig.background_color,
+        theme_color: manifestConfig.theme_color,
         display: `minimal-ui`,
       },
     },
@@ -79,12 +76,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'hof-docs-template',
+        name: 'HOF Guide App',
         icon: 'src/images/favicon.png',
-        short_name: 'hof-docs',
-        start_url: config.start_url,
-        background_color: config.background_color,
-        theme_color: config.theme_color,
+        short_name: 'hof-guide',
+        start_url: manifestConfig.start_url,
+        background_color: manifestConfig.background_color,
+        theme_color: manifestConfig.theme_color,
         display: `standalone`,
       },
     },
@@ -183,4 +180,4 @@ module.exports = {
    },
     'gatsby-plugin-offline'
   ],
-};
+});
