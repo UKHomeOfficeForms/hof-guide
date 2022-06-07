@@ -1,5 +1,5 @@
 
-const config = reuire('./config');
+const config = require('./config');
 
 const manifestConfig = {
   start_url: `/`,
