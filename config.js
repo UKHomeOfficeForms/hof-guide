@@ -8,4 +8,4 @@ module.exports = {
     description: `Markdown based wiki site for the Home Office Forms framework`,
     author: `@Alex-Swann`,
   }
-}
+};
