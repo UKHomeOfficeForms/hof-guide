@@ -149,3 +149,8 @@
   background-image: url("../images/arrow-up.svg");
   background-color: rgb(214, 214, 214);
 }
+
+/* Code in Markdown */
+code {
+  white-space : pre-wrap !important;
+}
