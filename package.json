@@ -12,8 +12,8 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
-    "start": "npm run develop",
+    "develop": "gatsby develop -p 8000",
+    "start": "yarn run develop",
     "format": "prettier --write \"src/**/*.js\"",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
