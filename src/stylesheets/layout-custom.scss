@@ -29,11 +29,11 @@
 }
 
 /* Copy Code Button */
-.gatsby-code-button-container {}
-.gatsby-code-button {}
-.gatsby-code-button-icon {
-
+.gatsby-code-button-container {
+  margin-top: -2.5rem;
 }
+.gatsby-code-button {}
+.gatsby-code-button-icon {}
 .gatsby-code-button-toaster {}
 .gatsby-code-button-toaster-text {
   background-color: rgba(92, 158, 79, 0.5);
@@ -94,7 +94,7 @@
   }
 
   > ul > li {
-    margin-top: -0.5rem;
+    margin-top: -0.3rem;
   }
 
   ul li {
@@ -153,4 +153,11 @@
 /* Code in Markdown */
 code {
   white-space : pre-wrap !important;
+}
+
+p code {
+  background: #eff1f2 !important;
+  border: 1px #d3d3d3 solid !important;
+  color: black !important;
+  font-size: 80% !important;
 }
