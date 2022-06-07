@@ -5,7 +5,8 @@
   "description": "A guide used as documentation for the Home Office Forms (HOF) framework",
   "author": "Alexander Swann",
   "keywords": [
-    "home office forms", "hof guide"
+    "home office forms",
+    "hof guide"
   ],
   "engines": {
     "node": "^16.15.0"
@@ -41,6 +42,7 @@
     "gatsby-plugin-sitemap": "^5.15.1",
     "gatsby-remark-autolink-headers": "^5.15.1",
     "gatsby-remark-code-titles": "^1.1.0",
+    "gatsby-remark-images": "^6.16.0",
     "gatsby-remark-prismjs": "^6.15.0",
     "gatsby-remark-table-of-contents": "^2.0.0",
     "gatsby-source-filesystem": "^4.15.0",

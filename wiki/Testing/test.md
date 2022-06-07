@@ -9,3 +9,4 @@ var test2 = [{ help: 'two' }];
 
 var test3 = [{ help: 'two' }];
 ```
+![Test Image](../../static/images/homepage/hof-guide-app.png)

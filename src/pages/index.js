@@ -17,8 +17,13 @@ const IndexPage = () => (
     <h2>Tips:</h2>
     <ul>
       <li>
-        Add some new pages by following the instructions in the <strong>`Add New Page`</strong> page
-        <br></br>under the <strong>`Wiki How Tos`</strong> section.
+        <p>Add some new pages by following the instructions in the <strong>`Add New Page`</strong> page
+        <br></br>under the <strong>`Wiki How Tos`</strong> section.</p>
+      </li>
+      <li>
+        <p>Use this guide as a Chrome app which you can access from your Dock anytime</p>
+        <img src="images/homepage/hof-guide-app.png" width="50%" title="HOF Guide App" alt="HOF Guide App"/><br></br>
+        <img src="images/homepage/app-in-dock.png" width="40%" title="App in Dock" alt="App in Dock"/>
       </li>
     </ul>
   </Layout>
