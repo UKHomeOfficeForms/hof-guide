@@ -12,6 +12,6 @@ module.exports = {
   // Fields to index for search-bar. You can add `html` to this array if you want to search content too.
   searchFields: [`title`, `tags`],
   start_url: `/`,
-  background_color: `#663399`,
-  theme_color: `#663399`
+  background_color: `#F3F2F1`,
+  theme_color: `#F3F2F1`
 };
