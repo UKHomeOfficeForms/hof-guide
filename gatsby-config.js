@@ -12,8 +12,7 @@ module.exports = Obejct.assign({}, config, {
     {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
-        // Fields to index
-        fields: [`title`, `tags`, `html`],
+        fields: config.searchFields,
         // How to resolve each field`s value for a supported node type
         resolvers: {
           // For any node of type MarkdownRemark, list how to resolve the fields` values
@@ -62,9 +61,9 @@ module.exports = Obejct.assign({}, config, {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `hof-guide-starter-default`,
+        name: `${config.appName} Default`,
         icon: 'src/images/favicon.png',
-        short_name: `starter`,
+        short_name: `${config.appName} Starter`,
         start_url: manifestConfig.start_url,
         background_color: manifestConfig.background_color,
         theme_color: manifestConfig.theme_color,
@@ -76,9 +75,9 @@ module.exports = Obejct.assign({}, config, {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'HOF Guide App',
+        name: config.appName,
         icon: 'src/images/favicon.png',
-        short_name: 'hof-guide',
+        short_name: config.appName,
         start_url: manifestConfig.start_url,
         background_color: manifestConfig.background_color,
         theme_color: manifestConfig.theme_color,
