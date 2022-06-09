@@ -1,26 +1,10 @@
 /* Side Nav Bar, Content & Search Bar */
-
 .container-flex {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
 }
 
-.sidebar-flex {
-  max-width: 300px;
-}
-
-.content-flex {
-  margin: 0 auto;
-  max-width: 960;
-  padding: 0px 1.0875rem 1.45rem;
-  padding-top: 0;
-}
-
-.search-bar {
-  position: absolute;
-  top: 14%;
-  left: 80%;
+.main-content {
+  padding-left: 1rem;
 }
 
 /* Header */
@@ -122,11 +106,12 @@
 }
 
 /* Scroll Back To Top Button */
-.sidebar-btns {
+#scroll-btn {
   display: none;
   position: fixed;
   top: 5%;
   left: 60%;
+  right: 15%;
   z-index: 99;
   font-size: 1.125rem;
   border: none;
@@ -137,17 +122,12 @@
   padding: 0.9375rem;
   border-radius: 0.25rem;
   background-image: url("../images/arrow-up.svg");
+  background-color: rgb(214, 214, 214);
   opacity: 80%;
   background-repeat: no-repeat;
   width: 50px;
   height: 50px;
   background-position: center;
-}
-
-#scroll-btn {
-  right: 15%;
-  background-image: url("../images/arrow-up.svg");
-  background-color: rgb(214, 214, 214);
 }
 
 /* Code in Markdown */

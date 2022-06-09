@@ -29,23 +29,22 @@ const Layout = ({ children }) => (
     render={data => (
       <>
         <Header/>
-        <SearchBar/>
-        <div className="govuk-width-container ">
-          <main className="govuk-main-wrapper " id="main-content" role="main">
+        <div className="govuk-width-container">
+          <main className="govuk-main-wrapper" id="main-content" role="main">
             <div className="govuk-grid-row">
               <div className="container-flex">
-                <div className="app-pane__toc">
-                  <div className="toc" data-module="table-of-contents">
-                    <a href="#" className="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
-                    <nav id="toc" className="js-toc-list toc__list" aria-labelledby="toc-heading">
-                      <Sidebar className="sidebar-flex" />
-                    </nav>
+                <div class="column">
+                  <div className="app-pane__toc">
+                    <div className="toc" data-module="table-of-contents">
+                      <a href="#" className="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
+                      <nav id="toc" className="js-toc-list toc__list" aria-labelledby="toc-heading">
+                        <Sidebar className="sidebar-nav" />
+                      </nav>
+                    </div>
                   </div>
                 </div>
-                <div className="content-flex">
-                  {children}
-                  <hr />
-                </div>
+                <div class="column main-content">{children}<hr/></div>
+                <div class="column"><SearchBar/></div>
               </div>
             </div>
           </main>
