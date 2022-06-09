@@ -4,7 +4,39 @@
 }
 
 .main-content {
-  padding-left: 1rem;
+  padding-left: 1.75rem;
+  margin-left: 12.5rem;
+  min-height: 20rem;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(150, 150, 150, 1);
+}
+
+.sidebar-nav {
+  z-index:10;
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  bottom: 0;
+  border-top: 0.5px solid #d3d3d3;
+  border-bottom: 0.5px solid #d3d3d3;
+  padding-top: 1rem;
+  margin-top: 3.75rem;
+  margin-bottom: 2rem;
+}
+
+.govuk-footer {
+  z-index: 1000;
+  position: absolute;
+  padding-right: 10em;
+  padding-left: 10em;
 }
 
 /* Header */

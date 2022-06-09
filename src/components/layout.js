@@ -49,7 +49,7 @@ const Layout = ({ children }) => (
             </div>
           </main>
         </div>
-        <Footer/>
+                <Footer/>
         <button id="scroll-btn" className="sidebar-btns" title="Scroll to top"></button>
         <Helmet>
             <script src={withPrefix('js/govuk.js')} type="text/javascript" />
