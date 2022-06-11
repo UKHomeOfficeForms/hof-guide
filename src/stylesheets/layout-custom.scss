@@ -1,3 +1,4 @@
+@import './variables';
 /* Side Nav Bar, Content & Search Bar */
 .container-flex {
   display: flex;
@@ -53,7 +54,7 @@
   overflow-y: scroll;
   top: 0;
   bottom: 0;
-  border: 0.5px solid #d3d3d3;
+  border: 0.5px solid $border-colour;
   padding-top: 1rem;
   margin: 3.76rem 0rem 2rem 0.93rem;
   @media only screen and (max-width: 768px) {
@@ -100,8 +101,8 @@
     'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier,
     monospace;
 
-  background-color: #d3d3d3;
-  color: black;
+  background-color: $border-colour;
+  color: $active-text-color;
   z-index: 0;
 
   border-top-left-radius: 0.3em;
@@ -114,13 +115,13 @@
   color: #727272;
   font-size: 120%;
   &:focus {
-    color: black;
+    color: $active-text-color;
   }
 }
 
 .nav-directory {
   text-decoration: none;
-  color: #005ea5;
+  color: $link-color;
   display: block;
   padding: 8px 15px;
   margin: 0 -15px;
@@ -133,13 +134,13 @@
 
 .k-state-focused, .k-widget ::selection, .k-block ::selection, .k-panel ::selection {
   background-color: #FFDD02;
-  color: black;
+  color: $active-text-color;
 }
 
 .app-pane__toc {
   white-space: nowrap;
   padding-right: 0.75rem;
-  border-right: 1px solid #d3d3d3;
+  border-right: 1px solid $border-colour;
 }
 
 .table-of-contents {
@@ -171,10 +172,10 @@
 
   a:link, a:visited {
     text-decoration: none;
-    color: #005ea5;
+    color: $link-color;
   }
   a:focus {
-    color: black;
+    color: $active-text-color;
   }
 }
 
@@ -210,7 +211,7 @@ code {
 
 p code, li code {
   background: #eff1f2 !important;
-  border: 1px #d3d3d3 solid !important;
-  color: black !important;
+  border: 1px $border-colour solid !important;
+  color: $active-text-color !important;
   font-size: 80% !important;
 }
