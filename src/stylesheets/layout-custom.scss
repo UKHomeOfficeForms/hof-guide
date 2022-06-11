@@ -6,8 +6,23 @@
 .main-content {
   padding-left: 1.75rem;
   margin-left: 12.5rem;
-  min-height: 20rem;
+  min-height: 31.5rem;
   min-width: 38rem;
+  @media only screen and (max-width: 1100px) {
+    min-width: 34rem;
+  }
+  @media only screen and (max-width: 1000px) {
+    min-width: 30rem;
+  }
+  @media only screen and (max-width: 900px) {
+    min-width: 22rem;
+  }
+  @media only screen and (max-width: 800px) {
+    min-width: 15rem;
+  }
+  @media only screen and (max-width: 600px) {
+    min-width: 0rem;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -29,7 +44,7 @@
   border-top: 0.5px solid #d3d3d3;
   border-bottom: 0.5px solid #d3d3d3;
   padding-top: 1rem;
-  margin-top: 3.75rem;
+  margin-top: 5.6rem;
   margin-bottom: 2rem;
 }
 
