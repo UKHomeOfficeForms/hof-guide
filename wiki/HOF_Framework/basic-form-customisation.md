@@ -188,7 +188,7 @@ The last thing to do is to add some label content for our new fields. You will s
 
 To add label content for our new fields we need to set some properties in `./translations/src/en/fields.json`. You will see here that there is a label defined for the name field. We can add some more labels for our new fields as follows:
 
-```json:title=fieldsjson
+```json:title=fields.json
 {
   "name": {
     "label": "Name"
