@@ -7,17 +7,27 @@
   padding-left: 1.75rem;
   margin-left: 12.5rem;
   min-height: 31.5rem;
-  min-width: 38rem;
-  @media only screen and (max-width: 1100px) {
+  min-width: 36.7rem;
+  transition: all 0.2s;
+  @media only screen and (max-width: 1022px) {
     min-width: 34rem;
   }
-  @media only screen and (max-width: 1000px) {
-    min-width: 30rem;
+  @media only screen and (max-width: 980px) {
+    min-width: 32rem;
   }
-  @media only screen and (max-width: 900px) {
-    min-width: 22rem;
+  @media only screen and (max-width: 950px) {
+    min-width: 28rem;
   }
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 885px) {
+    min-width: 24rem;
+  }
+  @media only screen and (max-width: 825px) {
+    min-width: 20rem;
+  }
+  @media only screen and (max-width: 758px) {
+    min-width: 16rem;
+  }
+  @media only screen and (max-width: 708px) {
     min-width: 12rem;
   }
   @media only screen and (max-width: 600px) {
@@ -61,8 +71,8 @@
 .govuk-footer {
   z-index: 1000;
   position: absolute;
-  padding-right: 10em;
-  padding-left: 10em;
+  padding-right: 20em;
+  padding-left: 20em;
 }
 
 /* Header */
