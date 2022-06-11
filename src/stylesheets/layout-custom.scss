@@ -37,16 +37,25 @@
 }
 
 .sidebar-nav {
+  background-color: #f7f7f7;
   z-index:10;
   position: fixed;
   overflow-y: scroll;
   top: 0;
   bottom: 0;
-  border-top: 0.5px solid #d3d3d3;
-  border-bottom: 0.5px solid #d3d3d3;
+  border: 0.5px solid #d3d3d3;
   padding-top: 1rem;
-  margin-top: 5.6rem;
-  margin-bottom: 2rem;
+  margin: 3.76rem 0rem 2rem 0.93rem;
+  @media only screen and (max-width: 768px) {
+    margin-top: 5.62rem;
+  }
+  @media only screen and (max-width: 640px) {
+    margin-top: 5.28rem;
+  }
+}
+
+.k-item.k-treeview-item {
+  padding-left: 0.5rem;
 }
 
 .govuk-footer {
@@ -92,7 +101,7 @@
 
 /* Table of Contents */
 #homepage {
-  margin-left: 1.4rem;
+  margin-left: 0.8rem;
   color: #727272;
   font-size: 120%;
 }

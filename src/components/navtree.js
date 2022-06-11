@@ -258,7 +258,7 @@ class NavTree extends Component {
         <br></br><br></br>
         <h4
           style={{
-            margin: '-0.5rem 0rem 0rem 1.45rem',
+            margin: '-0.5rem 0rem 0rem 0.8rem',
             color: '#005ea5',
             fontFamily: '"GDS Transport", arial, sans-serif',
             textDecoration: 'underline'
