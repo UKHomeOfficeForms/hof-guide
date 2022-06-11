@@ -14,10 +14,24 @@
   padding: 3px 2px;
 }
 
-.k-mid .k-state-focused p {
-  color: black !important;
+.k-treeview {
+  .k-state-focused {
+    p {
+      color: black !important;
+    }
+    &:hover {
+      color: black !important;
+      background-color: #ffdd00 !important;
+    }
+  }
+  .k-in {
+    &:active {
+      color: black !important;
+      background-color: #ffdd00 !important;
+    }
+  }
 }
 
-.k-state-focused:hover {
+.ki-in:hover {
   background-color: #ffdd00 !important;
 }

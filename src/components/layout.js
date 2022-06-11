@@ -33,7 +33,7 @@ const Layout = ({ children }) => (
           <main className="govuk-main-wrapper" id="main-content" role="main">
             <div className="govuk-grid-row">
               <div className="container-flex">
-                <div class="column">
+                <div className="column">
                   <div className="app-pane__toc">
                     <div className="toc" data-module="table-of-contents">
                       <a href="#" className="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
@@ -43,8 +43,8 @@ const Layout = ({ children }) => (
                     </div>
                   </div>
                 </div>
-                <div class="column main-content">{children}<hr/></div>
-                <div class="column"><SearchBar/></div>
+                <div className="column main-content">{children}<hr/></div>
+                <div className="column"><SearchBar/></div>
               </div>
             </div>
           </main>
