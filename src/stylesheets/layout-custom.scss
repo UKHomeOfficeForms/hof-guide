@@ -113,6 +113,9 @@
   margin-left: 0.8rem;
   color: #727272;
   font-size: 120%;
+  &:focus {
+    color: black;
+  }
 }
 
 .nav-directory {
@@ -169,6 +172,9 @@
   a:link, a:visited {
     text-decoration: none;
     color: #005ea5;
+  }
+  a:focus {
+    color: black;
   }
 }
 
