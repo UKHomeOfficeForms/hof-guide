@@ -33,7 +33,7 @@ This contains page-specific content for each page of your app. The top level key
 
 For example, to add the content for the address step we created earlier at `/address` then you would add the following to your `pages.json`:
 
-```json
+```json:title=pages.json
 {
   "name": {
     "header": "Personal details",
@@ -63,7 +63,7 @@ The properties available for each field vary slightly according to the field typ
 
 The `options` translation for a radio/checkbox group or select element should consist of a label for each option as defined in the options for the field. For example, for a yes/no radio button group:
 
-```json
+```json:title=fields.json
 {
   "resident-in-uk": {
     "legend": "Are you permanently resident in the United Kingdom?",
@@ -83,7 +83,7 @@ The `options` translation for a radio/checkbox group or select element should co
 
 The validation messages applicable to a field can also be defined as part of the field's translation by defining a `validation` object as part of the field's translation. For example - for an email input:
 
-```json
+```json:title=validation.json
 {
   "email-address": {
     "label": "Email address",
@@ -104,7 +104,7 @@ Depending on the type of validator which has failed, certain variables are avail
 
 If you wish to define global fallback messages for particular validation types then you can create a `validation.json` which will be used if no field-specific messages are present.
 
-```json
+```json:title=validation.json
 {
   "required": "This field is required",
   "minlength": "Enter at least {{minlength}} characters"

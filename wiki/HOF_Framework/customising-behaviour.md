@@ -84,7 +84,7 @@ The `behaviours` option can be set with either a single behaviour directly, or a
 
 The simplest form of a behaviour is a [mixin function](https://www.npmjs.com/package/mixwith#define-a-mixin), which takes a class as an argument, and extends it with custom methods.
 
-```js
+```js:title=example-configure-behaviour.js
 // my-behaviour.js
 module.exports = superclass => class extends superclass {
   configure(req, res, next) {
@@ -98,7 +98,7 @@ module.exports = superclass => class extends superclass {
 
 You can then apply this behaviour to a step as follows:
 
-```js
+```js:title=behaviour-in-steps.js
 module.exports = {
   steps: {
     '/my-step': {
@@ -114,7 +114,7 @@ In most cases, we will want custom behaviours to be configurable - for example, 
 
 In this case we can define our behaviour as a function which receives configuration options and returns a mixin function.
 
-```js
+```js:title=example-saveValues.js
 // reverse-a-key.js
 module.exports = config => superclass => class extends superclass {
   saveValues(req, res, next) {
@@ -126,7 +126,7 @@ module.exports = config => superclass => class extends superclass {
 
 You can then apply this behaviour to a step as follows:
 
-```js
+```js:title=behaviour-in-step.js
 const reverse = require('./reverse-a-key');
 
 module.exports = {
@@ -145,7 +145,7 @@ In addition to any custom behaviours, hof ships with a "complete" behaviour out 
 
 This can be set on a step by simply setting the string `'complete'` as a behaviour. It would be expected that this would normally run in conjunction with a behaviour that extends `saveValues` to submit the user's application.
 
-```js
+```js:title=framework-and-custom-behaviours.js
 const submit = require('./my-submission-behaviour');
 
 module.exports = {

@@ -21,7 +21,7 @@ apps/my-hof-form/
 
 Open the index.js file in a text editor. You will see a steps configuration that looks like this:
 
-```js
+```js:title=example-steps.js
 steps: {
   '/name': {
     fields: ['name'],
@@ -45,7 +45,7 @@ To add a new step between `/name` and `/confirm` to collect a user's address we 
 
 Since it is going between `/name` and `/confirm` it should have a `next` property of `/confirm`, and we should modify the `next` property of the `/name` step to `/address`.
 
-```js
+```js:title=add-new-step.js
 steps: {
   '/name': {
     fields: ['name'],
@@ -66,7 +66,7 @@ Now we need to add some fields to our new address step. This is as simple as add
 
 We'll add five fields to this step to collect a full address.
 
-```js
+```js:title=add-field-to-steps.js
 steps: {
   ...
   '/address': {
@@ -87,7 +87,7 @@ The next job is to configure the validation rules for our new fields. The config
 
 You will see existing configuration for the `name` field that's already in our app. We can add new config objects for each of our new fields to this.
 
-```js
+```js:title=field-validations.js
 module.exports = {
   name: {
     validate: 'required'
@@ -102,7 +102,7 @@ module.exports = {
 
 We want to make all of the fields except `address-line-2` mandatory, and so can give them a `validate` property of `'required'`.
 
-```js
+```js:title=required-validations.js
 module.exports = {
   name: {
     validate: 'required'
@@ -125,7 +125,7 @@ module.exports = {
 
 Additionally, we might want to do validation on the postcode to make sure it is correctly formatted, and so we can add an additional `postcode` validator. To add multiple validators to a field, simply set the validate property to an array.
 
-```js
+```js:title=multiple-validations.js
 postcode: {
   validate: ['required', 'postcode']
 }
@@ -139,7 +139,7 @@ By default all fields are `input[type=text]` unless otherwise specified. In this
 
 To do this we add a `mixin` property of `select` to that field.
 
-```js
+```js:title=field-mixins.js
 country: {
   mixin: 'select',
   validate: 'required'
@@ -148,7 +148,7 @@ country: {
 
 We also need to add some options for the field. Fortunately there is a Home Office managed list of countries, so we don't need to handle this ourselves. Install `hof-util-countries` from npm, and then add the following:
 
-```js
+```js:title=field-options.js
 country: {
   mixin: 'select',
   options: require('hof-util-countries')(),
@@ -162,7 +162,7 @@ For more `mixin` options and field configuration settings see [hof-template-mixi
 
 Some text inputs will include characters you don't wish to be recorded (e.g. hyphens or spaces). To remove these with the `formatter field`.
 
-```js
+```js:title=field-formatters.js
 sortCode: {
   mixin: 'textarea'
   validate: 'required',
@@ -172,7 +172,7 @@ sortCode: {
 
 You can also use the formatter field to ensure the characters recorded are all in upper or lower case.
 
-```js
+```js:title=uppercase-formatter.js
 brpNumber: {
   mixin: 'textarea'
   validate: 'required',
@@ -188,7 +188,7 @@ The last thing to do is to add some label content for our new fields. You will s
 
 To add label content for our new fields we need to set some properties in `./translations/src/en/fields.json`. You will see here that there is a label defined for the name field. We can add some more labels for our new fields as follows:
 
-```json
+```json:title=fieldsjson
 {
   "name": {
     "label": "Name"

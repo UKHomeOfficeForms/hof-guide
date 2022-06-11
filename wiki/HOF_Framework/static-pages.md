@@ -11,7 +11,7 @@ They can be defined in an existing app adjacent to `steps` or in an app of their
 
 Open the index.js file in a text editor. You will see a configuration that looks like this.
 
-```js
+```js:title=add-page-to-steps.js
 steps: {
   ...
   '/confirm': {
@@ -24,7 +24,7 @@ steps: {
 
 Now define the `pages`, where a key (`'/cookies'`) is the path to the page and a value (`'cookies'`) is the name of the view used to render the page.
 
-```js
+```js:title=static-pages.js
 steps: {
   ...
   '/confirm': {
@@ -44,7 +44,7 @@ pages: {
 
 By default views are loaded from the views directory in the current working directory. If necessary, views can be loaded from a custom location, set by adding a `views` option to the configuration for the route, e.g;
 
-```js
+```js:title=custom-view-steps.js
 views: './my/custom/views',
 pages: {
   '/cookies': 'cookies',
