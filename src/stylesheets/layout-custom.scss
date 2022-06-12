@@ -8,37 +8,40 @@
   padding-left: 1.75rem;
   margin-left: 12.5rem;
   min-height: 31.5rem;
+  min-width: 36.7rem;
+  max-width: 36.7rem;
   transition: all 0.4s;
-  width: 59.4%;
   @media only screen and (max-width: 1022px) {
-    width: 58.7%;
+    min-width: 34rem;
+    max-width: 34rem;
   }
   @media only screen and (max-width: 980px) {
-    width: 57%;
+    max-width: 32rem;
+    min-width: 32rem;
   }
   @media only screen and (max-width: 950px) {
-    width: 55.5%;
+    max-width: 28rem;
+    min-width: 28rem;
   }
   @media only screen and (max-width: 885px) {
-    width: 52%;
+    max-width: 24rem;
+    min-width: 24rem;
   }
   @media only screen and (max-width: 825px) {
-    width: 48.5%;
+    max-width: 20rem;
+    min-width: 20rem;
   }
   @media only screen and (max-width: 758px) {
-    width: 43.4%;
+    max-width: 16rem;
+    min-width: 16rem;
   }
   @media only screen and (max-width: 708px) {
-    width: 35%;
-  }
-  @media only screen and (max-width: 660px) {
-    width: 30%;
-  }
-  @media only screen and (max-width: 630px) {
-    width: 28%;
+    max-width: 12rem;
+    min-width: 12rem;
   }
   @media only screen and (max-width: 600px) {
-    width: 18%;
+    max-width: 7rem;
+    min-width: 0rem;
   }
 }
 
