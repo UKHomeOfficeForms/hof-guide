@@ -259,12 +259,13 @@ class NavTree extends Component {
         <h4
           style={{
             margin: '-0.5rem 0rem 0rem 0.8rem',
-            color: '#005ea5',
+            color: '#505a5f',
             fontFamily: '"GDS Transport", arial, sans-serif',
-            textDecoration: 'underline'
+            fontSize: '110%',
+            padding: '0.3rem 0 0.3rem 0'
           }}
         >
-        Contents
+        Contents:
         </h4>
         <TreeView
           data={tree}

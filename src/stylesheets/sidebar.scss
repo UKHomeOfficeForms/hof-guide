@@ -5,11 +5,16 @@
   text-decoration: none;
   height: 100%;
   width: 100%;
-}
-
-.nav-link:focus {
-  color: $active-text-color;
-  background-color: $active-background-color;
+  margin-top: 0.2rem;
+  &:hover {
+    text-decoration: underline !important;
+    color: $hover-text-color !important;
+    text-decoration-thickness: $hover-text-decoration-thickness !important;
+  }
+  &:focus {
+    color: $active-text-color !important;
+    text-decoration: none !important;
+  }
 }
 
 .nav {
@@ -18,7 +23,8 @@
 
 .k-treeview {
   .k-state-focused {
-    p {
+    box-shadow: none !important;
+    p:hover {
       color: $active-text-color !important;
     }
     &:hover {
@@ -27,6 +33,7 @@
     }
   }
   .k-in {
+    background-color: inherit !important;
     &:active {
       color: $active-text-color !important;
       background-color: $active-background-color !important;
@@ -34,6 +41,6 @@
   }
 }
 
-.ki-in:hover {
-  background-color: $active-background-color !important;
+.k-in {
+  padding: 0 0 0 0 !important;
 }

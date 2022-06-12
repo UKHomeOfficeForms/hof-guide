@@ -118,27 +118,32 @@
   border-top-right-radius: 0.3em;
 }
 
-/* Table of Contents */
 #homepage {
   margin-left: 0.8rem;
-  color: #727272;
   font-size: 120%;
   &:focus {
     color: $active-text-color;
   }
+  &:hover {
+    text-decoration: underline;
+    color: $hover-text-color;
+    text-decoration-thickness: $hover-text-decoration-thickness;
+  }
 }
 
 .nav-directory {
-  text-decoration: none;
   color: $link-color;
-  display: block;
-  padding: 8px 15px;
-  margin: 0 -15px;
+  margin: 0 0 0 -0.3rem;
   border-left: 5px solid transparent;
   cursor: pointer;
   text-align: -webkit-match-parent;
   list-style: none;
   font-weight: 800;
+  &:hover {
+    text-decoration: underline;
+    color: $hover-text-color;
+    text-decoration-thickness: $hover-text-decoration-thickness;
+  }
 }
 
 .k-state-focused, .k-widget ::selection, .k-block ::selection, .k-panel ::selection {
@@ -155,6 +160,15 @@
 .table-of-contents {
   a {
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      color: $hover-text-color;
+      text-decoration-thickness: $hover-text-decoration-thickness;
+    }
+    &:focus {
+      text-decoration: none;
+      color: $active-text-color;
+    }
   }
 
   > ul > li {
