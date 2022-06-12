@@ -159,6 +159,7 @@
 
 .table-of-contents {
   a {
+    white-space: nowrap;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -168,6 +169,9 @@
     &:focus {
       text-decoration: none;
       color: $active-text-color;
+    }
+    &:visited:not(:focus) {
+      color: $link-color;
     }
   }
 

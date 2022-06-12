@@ -22,6 +22,8 @@
 }
 
 .k-treeview {
+  margin-left: -0.4rem !important;
+  min-width: 12.5rem !important;
   .k-state-focused {
     box-shadow: none !important;
     p:hover {
@@ -43,4 +45,8 @@
 
 .k-in {
   padding: 0 0 0 0 !important;
+}
+
+.k-item {
+  margin:  0 0 0.3rem 0.5rem !important;
 }
