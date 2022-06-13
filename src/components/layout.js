@@ -28,26 +28,24 @@ const Layout = ({ children }) => (
     render={data => (
       <>
         <Header/>
-        <div className="govuk-width-container">
-          <main className="govuk-main-wrapper" id="main-content" role="main">
-            <div className="govuk-grid-row">
-              <div className="container-flex">
-                <div className="column">
-                  <div className="app-pane__toc">
-                    <div className="toc" data-module="table-of-contents">
-                      <a href="#" className="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
-                      <nav id="toc" className="js-toc-list toc__list" aria-labelledby="toc-heading">
-                        <Sidebar className="sidebar-nav" />
-                      </nav>
-                    </div>
+        <main className="govuk-main-wrapper" id="main-content" role="main">
+          <div className="govuk-grid-row">
+            <div className="container-flex">
+              <div className="column">
+                <div className="app-pane__toc">
+                  <div className="toc" data-module="table-of-contents">
+                    <a href="#" className="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
+                    <nav id="toc" className="js-toc-list toc__list" aria-labelledby="toc-heading">
+                      <Sidebar className="sidebar-nav" />
+                    </nav>
                   </div>
                 </div>
-                <div className="column main-content">{children}<hr/></div>
               </div>
+              <div className="column main-content">{children}<hr/></div>
             </div>
-          </main>
-        </div>
-                <Footer/>
+          </div>
+        </main>
+        <Footer/>
         <button id="scroll-btn" className="sidebar-btns" title="Scroll to top"></button>
         <Helmet>
             <script src={withPrefix('js/govuk.js')} type="text/javascript" />
