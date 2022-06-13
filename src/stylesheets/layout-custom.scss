@@ -1,13 +1,14 @@
 @import './variables';
 /* Side Nav Bar, Content & Search Bar */
-.container-flex {
-  display: flex;
+.main-content {
+  padding-left: 2.5rem;
+  margin-left: 13.5rem;
+  margin-right: 7rem;
+  margin-top: 3rem;
 }
 
-.main-content {
-  padding-left: 1.75rem;
-  margin-left: 12.5rem;
-  min-height: 31.5rem;
+.page-content {
+  min-height: 20rem;
 }
 
 ::-webkit-scrollbar {
@@ -30,7 +31,9 @@
   bottom: 0;
   border: 0.5px solid $border-colour;
   padding-top: 1rem;
-  margin: 3.76rem 0rem 2rem 0.93rem;
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+  margin-top: 3.76rem;
   @media only screen and (max-width: 899px) {
     margin-top: 6.88rem;
   }
@@ -44,9 +47,11 @@
 }
 
 .govuk-footer {
-  z-index: 1000;
-  position: absolute;
-  width: 100%;
+  margin-bottom: -3rem;
+  margin-left: -2rem;
+  margin-right: -7rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 /* Header */
@@ -175,9 +180,7 @@
 #scroll-btn {
   display: none;
   position: fixed;
-  top: 5%;
-  left: 60%;
-  right: 15%;
+  left: 56%;
   z-index: 99;
   font-size: 1.125rem;
   border: none;
@@ -194,6 +197,13 @@
   width: 50px;
   height: 50px;
   background-position: center;
+  top: 9.7%;
+  @media only screen and (max-width: 899px) {
+    top: 17.8%;
+  }
+  @media only screen and (max-width: 542px) {
+    top: 22.6%;
+  }
 }
 
 /* Code in Markdown */
@@ -237,4 +247,10 @@ p code, li code {
 .govuk-header__container {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.govuk-header {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }

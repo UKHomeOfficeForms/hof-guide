@@ -29,26 +29,21 @@ const Layout = ({ children }) => (
       <>
         <Header/>
         <main className="govuk-main-wrapper" id="main-content" role="main">
-          <div className="govuk-grid-row">
-            <div className="container-flex">
-              <div className="column">
-                <div className="app-pane__toc">
-                  <div className="toc" data-module="table-of-contents">
-                    <a href="#" className="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
-                    <nav id="toc" className="js-toc-list toc__list" aria-labelledby="toc-heading">
-                      <Sidebar className="sidebar-nav" />
-                    </nav>
-                  </div>
-                </div>
-              </div>
-              <div className="column main-content">{children}<hr/></div>
+          <div className="app-pane__toc">
+            <div className="toc" data-module="table-of-contents">
+              <a href="#" className="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></a>
+              <nav id="toc" className="js-toc-list toc__list" aria-labelledby="toc-heading">
+                <Sidebar className="sidebar-nav" />
+              </nav>
             </div>
           </div>
+          <div className="main-content"><div className="page-content">{children}<hr/></div>
+          <Footer/>
+          </div>
         </main>
-        <Footer/>
         <button id="scroll-btn" className="sidebar-btns" title="Scroll to top"></button>
         <Helmet>
-            <script src={withPrefix('js/govuk.js')} type="text/javascript" />
+          <script src={withPrefix('js/govuk.js')} type="text/javascript" />
         </Helmet>
         <script>document.documentElement.classList.remove('no-js')</script>
       </>
