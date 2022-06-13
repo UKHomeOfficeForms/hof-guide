@@ -4,7 +4,13 @@
   padding-left: 2.5rem;
   margin-left: 13.5rem;
   margin-right: 7rem;
-  margin-top: 3rem;
+  margin-top: 3.76rem;
+  @media only screen and (max-width: 899px) {
+    margin-top: 6.88rem;
+  }
+  @media only screen and (max-width: 542px) {
+    margin-top: 8.76rem;
+  }
 }
 
 .page-content {
