@@ -8,41 +8,6 @@
   padding-left: 1.75rem;
   margin-left: 12.5rem;
   min-height: 31.5rem;
-  min-width: 36.7rem;
-  max-width: 36.7rem;
-  transition: all 0.4s;
-  @media only screen and (max-width: 1022px) {
-    min-width: 34rem;
-    max-width: 34rem;
-  }
-  @media only screen and (max-width: 980px) {
-    max-width: 32rem;
-    min-width: 32rem;
-  }
-  @media only screen and (max-width: 950px) {
-    max-width: 28rem;
-    min-width: 28rem;
-  }
-  @media only screen and (max-width: 885px) {
-    max-width: 24rem;
-    min-width: 24rem;
-  }
-  @media only screen and (max-width: 825px) {
-    max-width: 20rem;
-    min-width: 20rem;
-  }
-  @media only screen and (max-width: 758px) {
-    max-width: 16rem;
-    min-width: 16rem;
-  }
-  @media only screen and (max-width: 708px) {
-    max-width: 12rem;
-    min-width: 12rem;
-  }
-  @media only screen and (max-width: 600px) {
-    max-width: 7rem;
-    min-width: 0rem;
-  }
 }
 
 ::-webkit-scrollbar {
@@ -66,11 +31,11 @@
   border: 0.5px solid $border-colour;
   padding-top: 1rem;
   margin: 3.76rem 0rem 2rem 0.93rem;
-  @media only screen and (max-width: 768px) {
-    margin-top: 5.62rem;
+  @media only screen and (max-width: 899px) {
+    margin-top: 6.88rem;
   }
-  @media only screen and (max-width: 640px) {
-    margin-top: 5.28rem;
+  @media only screen and (max-width: 542px) {
+    margin-top: 8.76rem;
   }
 }
 
@@ -241,4 +206,35 @@ p code, li code {
   border: 1px $border-colour solid !important;
   color: $active-text-color !important;
   font-size: 80% !important;
+}
+
+/* Search Bar */
+#custom-search-bar {
+  border: 0px;
+  clip: rect(0px, 0px, 0px, 0px);
+  height: 1px;
+  margin-bottom: -1px;
+  margin-right: -1px;
+  overflow: hidden;
+  padding: 0px; position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+#app-site-search__input__assistiveHint {
+  display: none;
+}
+
+.app-site-search__input--default {
+  &:focus {
+    border-color: $active-text-color;
+    outline: 3px solid #fd0;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px;
+  }
+}
+
+.govuk-header__container {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }

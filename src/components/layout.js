@@ -7,7 +7,6 @@ import { StaticQuery, graphql, withPrefix } from 'gatsby';
 import Sidebar from './sidebar';
 import Header from './header';
 import Footer from './footer';
-import SearchBar from './search-bar';
 
 import '@progress/kendo-theme-default/dist/all.css';
 import '../stylesheets/govuk.scss';
@@ -44,7 +43,6 @@ const Layout = ({ children }) => (
                   </div>
                 </div>
                 <div className="column main-content">{children}<hr/></div>
-                <div className="column"><SearchBar/></div>
               </div>
             </div>
           </main>

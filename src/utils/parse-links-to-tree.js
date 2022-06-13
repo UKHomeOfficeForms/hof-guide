@@ -85,6 +85,12 @@ const parseLinksToTree = pages => {
   return navTree;
 };
 
+const constructDirBreadcrumbs = slug => {
+  const dirsArr = slug.match(/(?<=\/)(.*?)(?=\/)/g);
+  dirsArr.pop();
+  return dirsArr.join(' › ').replace(/_/g, ' ');
+};
+
 const constructPageUrl = page => {
   const matterPath = page.path;
   let parentDir = page.slug.split('/').filter(uri => uri);
@@ -94,7 +100,13 @@ const constructPageUrl = page => {
   return matterPath ? `/${parentDir}${matterPath}` : page.slug.slice(0, -1);
 };
 
+const goToPage = page => {
+  return window.location.href = constructPageUrl(page);
+};
+
 module.exports = {
   parseLinksToTree,
-  constructPageUrl
+  constructPageUrl,
+  constructDirBreadcrumbs,
+  goToPage
 };

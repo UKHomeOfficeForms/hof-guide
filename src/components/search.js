@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Index } from "elasticlunr"
 import { Link } from "gatsby"
-import { constructPageUrl } from '../utils/parse-links-to-tree'
+import { constructPageUrl, constructDirBreadcrumbs, goToPage } from '../utils/parse-links-to-tree'
 
 // Search component
 export default class Search extends Component {
@@ -15,15 +15,41 @@ export default class Search extends Component {
 
   render() {
     return (
-      <div className='search-bar'>
-        <input type="text" value={this.state.query} onChange={this.search} placeholder="Search..."/>
-        <ul>
-          {this.state.results.map(page => (
-            <li key={page.id}>
-              <Link to={constructPageUrl(page)}>{page.title}</Link>
-            </li>
-          ))}
-        </ul>
+      <div className="app-site-search" data-module="app-search">
+        <div className="app-site-search__wrapper">
+          <div id="custom-search-bar">
+            <div id="app-site-search__input__status--A" role="status" aria-atomic="true" aria-live="polite"></div>
+            <div id="app-site-search__input__status--B" role="status" aria-atomic="true" aria-live="polite"></div>
+          </div>
+
+          <input
+            aria-expanded="false"
+            aria-owns="app-site-search__input__listbox"
+            aria-autocomplete="both" autoComplete="off"
+            className="app-site-search__input app-site-search__input--default"
+            id="app-site-search__input"
+            name="input-autocomplete"
+            placeholder="Search Guide" type="text" role="combobox"
+            aria-describedby="app-site-search__input__assistiveHint"
+            value={this.state.query} onChange={this.search} />
+
+          <ul className="app-site-search__menu app-site-search__menu--overlay app-site-search__menu--visible"
+            id="app-site-search__input__listbox" role="listbox">
+            {this.state.results.map((page, index) => (
+                <li
+                  key={page.id}
+                  aria-selected="false"
+                  className="app-site-search__option"
+                  id={`app-site-search__input__option--${index}`} role="option"
+                  tabIndex="-1" aria-posinset={index + 1} aria-setsize={this.state.results.length}
+                  onClick={goToPage.bind(this, page)}>
+                    {page.title}
+                    <span className="app-site-search--section">{constructDirBreadcrumbs(page.slug)}</span>
+                </li>
+            ))}
+          </ul>
+          <span id="app-site-search__input__assistiveHint">When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.</span>
+        </div>
       </div>
     )
   }
