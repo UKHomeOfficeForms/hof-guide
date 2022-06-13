@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Index } from "elasticlunr"
-import { Link } from "gatsby"
-import { constructPageUrl, constructDirBreadcrumbs, goToPage } from '../utils/parse-links-to-tree'
+import { Link, navigate } from "gatsby"
+import { constructPageUrl, constructDirBreadcrumbs } from '../utils/parse-links-to-tree'
 
 // Search component
 export default class Search extends Component {
@@ -42,7 +42,7 @@ export default class Search extends Component {
                   className="app-site-search__option"
                   id={`app-site-search__input__option--${index}`} role="option"
                   tabIndex="-1" aria-posinset={index + 1} aria-setsize={this.state.results.length}
-                  onClick={goToPage.bind(this, page)}>
+                  onClick={() => { navigate(constructPageUrl(page)) }}>
                     {page.title}
                     <span className="app-site-search--section">{constructDirBreadcrumbs(page.slug)}</span>
                 </li>

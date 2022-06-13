@@ -100,13 +100,8 @@ const constructPageUrl = page => {
   return matterPath ? `/${parentDir}${matterPath}` : page.slug.slice(0, -1);
 };
 
-const goToPage = page => {
-  return window.location.href = constructPageUrl(page);
-};
-
 module.exports = {
   parseLinksToTree,
   constructPageUrl,
-  constructDirBreadcrumbs,
-  goToPage
+  constructDirBreadcrumbs
 };
