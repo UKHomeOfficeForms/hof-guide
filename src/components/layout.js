@@ -7,6 +7,7 @@ import { StaticQuery, graphql, withPrefix } from 'gatsby';
 import Sidebar from './sidebar';
 import Header from './header';
 import Footer from './footer';
+import Breadcrumb from './breadcrumb';
 
 import '@progress/kendo-theme-default/dist/all.css';
 import '../stylesheets/govuk.scss';
@@ -14,7 +15,7 @@ import '../stylesheets/layout-custom.scss';
 import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
-const Layout = ({ children }) => (
+const Layout = ({ children, crumbs, title }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -37,7 +38,7 @@ const Layout = ({ children }) => (
               </nav>
             </div>
           </div>
-          <div className="main-content"><div className="page-content">{children}<hr/></div>
+          <div className="main-content"><div className="page-content"><Breadcrumb crumbs={crumbs} title={title}/>{children}<hr/></div>
           <Footer/>
           </div>
         </main>
@@ -52,7 +53,7 @@ const Layout = ({ children }) => (
 );
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default Layout;

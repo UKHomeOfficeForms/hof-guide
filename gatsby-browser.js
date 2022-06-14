@@ -1,3 +1,4 @@
+require('gatsby-plugin-breadcrumb/gatsby-plugin-breadcrumb.css');
 /** The SideBarBtns class */
 class SideBarBtns {
 

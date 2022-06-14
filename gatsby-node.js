@@ -60,7 +60,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       const mergedFields = Object.assign({}, node.fields, node.frontmatter);
-      
+
       createPage({
         path: constructPageUrl(mergedFields),
         component: wikiPostTemplate,

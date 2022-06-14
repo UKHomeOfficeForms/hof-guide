@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const IndexPage = () => (
-  <Layout>
+  <Layout crumbs={[]} title="Home">
     <SEO title="Home" keywords={[`home office forms`, `form builder`, `hof`, 'govuk form']} />
     <h1>
       Welcome to the HOF Guide{' '}
