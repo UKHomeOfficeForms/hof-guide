@@ -85,10 +85,14 @@ const parseLinksToTree = pages => {
   return navTree;
 };
 
-const constructDirBreadcrumbs = slug => {
+const generateDirTree = slug => {
   const dirsArr = slug.match(/(?<=\/)(.*?)(?=\/)/g);
   dirsArr.pop();
-  return dirsArr.join(' › ').replace(/_/g, ' ');
+  return dirsArr;
+};
+
+const constructDirBreadcrumbs = slug => {
+  return generateDirTree(slug).join(' › ').replace(/_/g, ' ');
 };
 
 const constructPageUrl = page => {
@@ -103,5 +107,6 @@ const constructPageUrl = page => {
 module.exports = {
   parseLinksToTree,
   constructPageUrl,
-  constructDirBreadcrumbs
+  constructDirBreadcrumbs,
+  generateDirTree
 };
