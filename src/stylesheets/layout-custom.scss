@@ -260,3 +260,19 @@ p code, li code {
   width: 100%;
   z-index: 1;
 }
+
+.directory-index a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    color: $hover-text-color;
+    text-decoration-thickness: $hover-text-decoration-thickness;
+  }
+  &:focus {
+    color: $active-text-color;
+    text-decoration: none;
+  }
+  &:visited:not(:hover) {
+    color: $link-color;
+  }
+}
