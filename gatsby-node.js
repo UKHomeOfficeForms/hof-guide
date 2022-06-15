@@ -3,11 +3,12 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+const _ = require('lodash');
 const path = require('path');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
 const { createFilePath } = require(`gatsby-source-filesystem`);
-const { constructPageUrl } = require('./src/utils/parse-links-to-tree');
+const { constructPageUrl, generateDirTree } = require('./src/utils/parse-links-to-tree');
 
 exports.onPreBootstrap = ({ store }) => {
   const { program } = store.getState();
@@ -35,6 +36,7 @@ exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
   const wikiPostTemplate = require.resolve(`./src/templates/wiki-post.js`);
+  const directoryIndexTemplate = require.resolve(`./src/templates/directory-index.js`);
 
   return graphql(`
     {
@@ -58,9 +60,13 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors);
     }
 
+    const dirTree = result.data.allMarkdownRemark.edges.map(obj => generateDirTree(obj.node.fields.slug));
+    const dirUriArr = _.uniq(dirTree.map(arr => {
+      return { path: `/${arr.join('/')}`, title: arr[arr.length - 1] };
+    }));
+
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       const mergedFields = Object.assign({}, node.fields, node.frontmatter);
-      
       createPage({
         path: constructPageUrl(mergedFields),
         component: wikiPostTemplate,
@@ -69,6 +75,18 @@ exports.createPages = ({ actions, graphql }) => {
           slug: node.fields.slug,
           tags: node.frontmatter.tags
         }, // additional data can be passed via context
+      });
+    });
+
+    dirUriArr.forEach(obj => {
+      createPage({
+        path: obj.path,
+        component: directoryIndexTemplate,
+        context: {
+          title: obj.title,
+          slug: obj.path,
+          tags: []
+        }
       });
     });
   });

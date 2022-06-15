@@ -180,6 +180,15 @@ module.exports = Object.assign({}, config.gatsbyConfig, {
        ],
      },
    },
-    'gatsby-plugin-offline'
+    'gatsby-plugin-offline',
+    {
+     resolve: `gatsby-plugin-breadcrumb`,
+     options: {
+       // useAutoGen: required 'true' to use autogen
+       useAutoGen: true,
+       // usePathPrefix: optional, if you are using pathPrefix above
+       usePathPrefix: config.gatsbyConfig.pathPrefix
+     }
+    },
   ],
 });
