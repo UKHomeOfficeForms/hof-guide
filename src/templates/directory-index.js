@@ -44,10 +44,10 @@ const Template = ({ pageContext }) => {
       <div>
         <h1>{adjustedTitle}</h1>
         <p>The following pages refer to this topic:</p>
-        <ul class="directory-index">
-          {relevantUris.map(obj => {
+        <ul className="directory-index">
+          {relevantUris.map((obj, index) => {
               return (
-                <li><Link to={obj.path}>{obj.title}</Link></li>
+                <li key={index}><Link to={obj.path}>{obj.title}</Link></li>
              )
           })}
         </ul>
