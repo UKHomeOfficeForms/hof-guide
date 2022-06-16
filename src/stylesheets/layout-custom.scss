@@ -295,3 +295,12 @@ p code, li code {
 body {
   font-family: "GDS Transport", arial, sans-serif;
 }
+
+#sitemap-header-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  color: #fff;
+  &:focus {
+    color: $active-text-color;
+  }
+}

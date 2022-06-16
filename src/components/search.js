@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Index } from "elasticlunr"
-import { navigate } from "gatsby"
+import { navigate, Link } from "gatsby"
 import { constructPageUrl, constructDirBreadcrumbs } from '../utils/parse-links-to-tree'
 
 // Search component
@@ -16,7 +16,10 @@ export default class Search extends Component {
   render() {
     return (
       <div className="app-site-search" data-module="app-search">
-        <div className="app-site-search__wrapper">
+        <Link id="sitemap-header-link" to='/sitemap'>
+          Sitemap
+        </Link>
+        <div className="app-site-search__wrapper govuk-visually-hidden" id="search-bar-wrapper">
           <div id="custom-search-bar">
             <div id="app-site-search__input__status--A" role="status" aria-atomic="true" aria-live="polite"></div>
             <div id="app-site-search__input__status--B" role="status" aria-atomic="true" aria-live="polite"></div>

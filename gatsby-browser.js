@@ -37,6 +37,8 @@ exports.onRouteUpdate = () => {
     /** The SideBarBtns object is initialized */
     sidebarbtns.Initialize();
   }
+  document.getElementById('search-bar-wrapper').classList.remove('govuk-visually-hidden');
+  document.getElementById('sitemap-header-link').classList.add('govuk-visually-hidden');
   /* Add smooth scroll to anchors on the page */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
