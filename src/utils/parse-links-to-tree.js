@@ -104,9 +104,25 @@ const constructPageUrl = page => {
   return matterPath ? `/${parentDir}${matterPath}` : page.slug.slice(0, -1);
 };
 
+const formatTitle = title => {
+  function titleCase(str) {
+    str = str.toLowerCase();
+    str = str.split(' ');
+
+    for (var i = 0; i < str.length; i++) {
+      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+    }
+    return str.join(' ');
+  }
+  // replace underscores and hyphens with spaces, plus starting weight integers
+  // then make title case
+  return titleCase(title.replace(/[-_]/g, ' ').replace(/^([0-9]+)/g, '-'));
+};
+
 module.exports = {
   parseLinksToTree,
   constructPageUrl,
   constructDirBreadcrumbs,
+  formatTitle,
   generateDirTree
 };
