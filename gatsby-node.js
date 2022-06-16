@@ -61,9 +61,9 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     const dirTree = result.data.allMarkdownRemark.edges.map(obj => generateDirTree(obj.node.fields.slug));
-    const dirUriArr = _.uniq(dirTree.map(arr => {
+    const dirUriArr = _.uniqBy(dirTree.map(arr => {
       return { path: `/${arr.join('/')}`, title: arr[arr.length - 1] };
-    }));
+    }), 'path');
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       const mergedFields = Object.assign({}, node.fields, node.frontmatter);
