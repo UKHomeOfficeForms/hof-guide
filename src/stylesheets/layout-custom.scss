@@ -277,6 +277,21 @@ p code, li code {
   }
 }
 
+.breadcrumb__link {
+  &:hover {
+    text-decoration: underline;
+    color: $hover-text-color;
+    text-decoration-thickness: $hover-text-decoration-thickness;
+  }
+  &:focus {
+    color: $active-text-color;
+    text-decoration: none;
+  }
+  &:visited:not(:hover) {
+    color: $link-color;
+  }
+}
+
 body {
   font-family: "GDS Transport", arial, sans-serif;
 }

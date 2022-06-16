@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Index } from "elasticlunr"
-import { Link, navigate } from "gatsby"
+import { navigate } from "gatsby"
 import { constructPageUrl, constructDirBreadcrumbs } from '../utils/parse-links-to-tree'
 
 // Search component

@@ -12,13 +12,11 @@ class SideBarBtns {
 
   /** Displays/Hides the buttons */
   ToggleButtons() {
+    var scrollBtn = document.getElementById("scroll-btn");
     /** If the current current scroll is 300px or more */
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-      /** The scroll to top button is displayed */
-      document.getElementById("scroll-btn").style.display = "block";
-    } else {
-      /** The scroll to top button is hidden */
-      document.getElementById("scroll-btn").style.display = "none";
+    if (scrollBtn) {
+      var hasScrolledDown = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300);
+      scrollBtn.style.display = hasScrolledDown ? 'block' : 'none';
     }
   }
 

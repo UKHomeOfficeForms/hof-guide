@@ -25,7 +25,12 @@ const Template = ({ pageContext }) => {
   let relevantUris = nodes
                       .map(node => node.path)
                       // filter page paths associated with current page onwards
-                      .filter(path => path.startsWith(pageContext.slug))
+                      .filter(path => {
+                        if (pageContext.slug === '/sitemap') {
+                          return path;
+                        }
+                        return path.startsWith(pageContext.slug);
+                      })
                       // generate brearcrumb directory tree array and return props
                       .map(path => {
                         let directoryTree = generateDirTree(`${path}/`);
@@ -85,6 +90,10 @@ const Template = ({ pageContext }) => {
   }
   // loop through all page routes to format a navigation tree
   let navTree = treeData(relevantUris); // clone array to not mutate original
+
+  if (pageContext.slug === '/sitemap') {
+    navTree = navTree.filter(obj => obj.children && obj.children.filter(n => n.path).length);
+  }
 
   function Menu({ items }) {
     return (

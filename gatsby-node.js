@@ -65,6 +65,9 @@ exports.createPages = ({ actions, graphql }) => {
       return { path: `/${arr.join('/')}`, title: arr[arr.length - 1] };
     }), 'path');
 
+    // add siteMap route
+    dirUriArr.push({ path: '/sitemap', title: 'Site Map' });
+
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       const mergedFields = Object.assign({}, node.fields, node.frontmatter);
       createPage({
