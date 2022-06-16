@@ -26,7 +26,7 @@ export default class Search extends Component {
           </div>
 
           <input
-            aria-expanded="false"
+            aria-expanded="false" aria-controls="custom-search-bar"
             aria-owns="app-site-search__input__listbox"
             aria-autocomplete="both" autoComplete="off"
             className="app-site-search__input app-site-search__input--default"
@@ -37,7 +37,7 @@ export default class Search extends Component {
             value={this.state.query} onChange={this.search} />
 
           <ul className="app-site-search__menu app-site-search__menu--overlay app-site-search__menu--visible"
-            id="app-site-search__input__listbox" role="listbox">
+            id="app-site-search__input__listbox">
             {this.state.results.map((page, index) => (
                 <li
                   key={page.id}
@@ -45,7 +45,8 @@ export default class Search extends Component {
                   className="app-site-search__option"
                   id={`app-site-search__input__option--${index}`} role="option"
                   tabIndex="-1" aria-posinset={index + 1} aria-setsize={this.state.results.length}
-                  onClick={() => { navigate(constructPageUrl(page)) }}>
+                  onClick={() => { navigate(constructPageUrl(page)) }}
+                  onKeyDown={() => { navigate(constructPageUrl(page)) }}>
                     {page.title}
                     <span className="app-site-search--section">{constructDirBreadcrumbs(page.slug)}</span>
                 </li>
