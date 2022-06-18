@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { Component } from "react"
 import { Index } from "elasticlunr"
 import { navigate, Link } from "gatsby"
@@ -13,6 +14,13 @@ export default class Search extends Component {
     }
   }
 
+  handleKeyDown(e, page) {
+    if (e.key === 'Enter') {
+      return navigate(constructPageUrl(page));
+    }
+    return;
+  }
+
   render() {
     return (
       <div className="app-site-search" data-module="app-search">
@@ -26,7 +34,7 @@ export default class Search extends Component {
           </div>
 
           <input
-            aria-expanded="false" aria-controls="custom-search-bar"
+            aria-expanded="false" aria-controls="app-site-search__input__listbox"
             aria-owns="app-site-search__input__listbox"
             aria-autocomplete="both" autoComplete="off"
             className="app-site-search__input app-site-search__input--default"
@@ -46,7 +54,7 @@ export default class Search extends Component {
                   id={`app-site-search__input__option--${index}`} role="option"
                   tabIndex="-1" aria-posinset={index + 1} aria-setsize={this.state.results.length}
                   onClick={() => { navigate(constructPageUrl(page)) }}
-                  onKeyDown={() => { navigate(constructPageUrl(page)) }}>
+                  onKeyDown={e => this.handleKeyDown(e, page)}>
                     {page.title}
                     <span className="app-site-search--section">{constructDirBreadcrumbs(page.slug)}</span>
                 </li>

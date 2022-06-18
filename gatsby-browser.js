@@ -1,6 +1,6 @@
 require('gatsby-plugin-breadcrumb/gatsby-plugin-breadcrumb.css');
-/** The SideBarBtns class */
-class SideBarBtns {
+/** The ContentScrollButton class */
+class ContentScrollButton {
 
   /** Used to register the scroll event handler */
   Initialize() {
@@ -28,14 +28,83 @@ class SideBarBtns {
   }
 }
 
+class SearchBar {
+  constructor(inputElement) {
+    this.inputElement = inputElement;
+  }
+
+  Initialize(inputElement) {
+    this.inputElement.addEventListener('input', this.UpdateInputAriaExpanded);
+    this.inputElement.addEventListener('keydown', this.UpdateAriaSelectForSearchResult);
+  }
+
+  UpdateInputAriaExpanded(e) {
+    setTimeout(() => {
+      if (document.getElementById('app-site-search__input__listbox').getElementsByTagName('li').length >= 1) {
+        e.target.setAttribute('aria-expanded', 'true');
+      } else {
+        e.target.setAttribute('aria-expanded', 'false');
+      }
+    }, 0);
+  }
+
+  UpdateAriaSelectForSearchResult(e) {
+    setTimeout(() => {
+      var $listItems = Array.from(document.getElementById('app-site-search__input__listbox').getElementsByTagName('li'));
+      var key = e.keyCode;
+      var $selected = $listItems.find(item => item.ariaSelected === 'true');
+      var $selectedIndex = $listItems.indexOf($selected);
+      var $current;
+
+      // Enter key
+      if (key === 13) {
+        return $selected.click();
+      }
+
+      if (![38, 40].includes(key)) return;
+
+      if ($selected) {
+        $selected.setAttribute('aria-selected', 'false');
+      }
+
+      if (key === 40) { // Down key
+        if (!$selected) {
+          $current = $listItems[0];
+        } else if ($selectedIndex + 1 < $listItems.length) {
+          $current = $listItems[$selectedIndex + 1];
+        } else {
+          $current = $selected;
+        }
+      } else if (key === 38) { // Up key
+        if ($selectedIndex === 0) {
+          $current = null;
+        } else if ($selected && $selectedIndex - 1 >= 0) {
+          $current = $listItems[$selectedIndex - 1];
+        } else {
+          $current = $selected;
+        }
+      }
+
+      if ($current) {
+        $current.setAttribute('aria-selected', 'true');
+      }
+    }, 0);
+  }
+}
+
 
 exports.onRouteUpdate = () => {
-  /** The SideBarBtns object is created */
-  let sidebarbtns = new SideBarBtns();
+  /** The ContentScrollButton object is created */
+  const searchbarInputElement = document.getElementById("app-site-search__input");
+  const searchBar = new SearchBar(searchbarInputElement);
+  const contentScrollButton = new ContentScrollButton();
   /** If the current page is an article page */
   if (document.getElementById("scroll-btn")) {
-    /** The SideBarBtns object is initialized */
-    sidebarbtns.Initialize();
+    /** The ContentScrollButton object is initialized */
+    contentScrollButton.Initialize();
+  }
+  if (searchbarInputElement) {
+    searchBar.Initialize();
   }
   /* Update visually hidden classes when JS enabled */
   document.getElementById('search-bar-wrapper').classList.remove('govuk-visually-hidden');
