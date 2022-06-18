@@ -249,11 +249,8 @@ class NavTree extends Component {
 
     return (
       <div className={this.props.className}>
-        <Link
-          id="homepage"
-          to="/"
-        >
-          <strong>Homepage</strong>
+        <Link id="homepage" to="/">
+          Homepage
         </Link>
         <br></br><br></br>
         <h4
@@ -268,21 +265,9 @@ class NavTree extends Component {
         Contents:
         </h4>
 
-        <div className="k-widget k-treeview" id="sitemap-sidebar-link" role="tree">
-          <ul className="k-treeview-lines" role="group">
-            <li className="k-item k-treeview-item">
-              <div className="k-mid">
-                <span className="k-in">
-                  <p className="nav nav-directory">
-                    <Link id="sitemap-sidebar-link" to='/sitemap'>
-                      Sitemap
-                    </Link>
-                  </p>
-                </span>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <Link id="sitemap-sidebar-link" to='/sitemap'>
+          Sitemap
+        </Link>
 
         <TreeView
           data={tree}
