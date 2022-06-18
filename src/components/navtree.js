@@ -271,7 +271,15 @@ class NavTree extends Component {
         <div className="k-widget k-treeview" id="sitemap-sidebar-link" role="tree">
           <ul className="k-treeview-lines" role="group">
             <li className="k-item k-treeview-item">
-              <div className="k-mid"><span className="k-in"><p className="nav nav-directory">Sitemap</p></span></div>
+              <div className="k-mid">
+                <span className="k-in">
+                  <p className="nav nav-directory">
+                    <Link id="sitemap-sidebar-link" to='/sitemap'>
+                      Sitemap
+                    </Link>
+                  </p>
+                </span>
+              </div>
             </li>
           </ul>
         </div>

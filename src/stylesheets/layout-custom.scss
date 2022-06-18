@@ -104,13 +104,14 @@
   border-top-right-radius: 0.3em;
 }
 
-#homepage {
+#homepage, #sitemap-sidebar-link {
+  text-decoration: none;
   margin-left: 0.8rem;
   font-size: 120%;
   &:focus {
     color: $active-text-color;
   }
-  &:hover {
+  &:hover:not(:focus) {
     text-decoration: underline;
     color: $hover-text-color;
     text-decoration-thickness: $hover-text-decoration-thickness;
