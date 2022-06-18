@@ -46,7 +46,6 @@ const Layout = ({ children, crumbs, title }) => (
         <Helmet>
           <script src={withPrefix('js/govuk.js')} type="text/javascript" />
         </Helmet>
-        <script>document.documentElement.classList.remove('no-js')</script>
       </>
     )}
   />

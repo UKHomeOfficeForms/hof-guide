@@ -95,6 +95,8 @@ class SearchBar {
 
 exports.onRouteUpdate = () => {
   /** The ContentScrollButton object is created */
+  document.documentElement.classList.remove('no-js');
+  
   const searchbarInputElement = document.getElementById("app-site-search__input");
   const searchBar = new SearchBar(searchbarInputElement);
   const contentScrollButton = new ContentScrollButton();
