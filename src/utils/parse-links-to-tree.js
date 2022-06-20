@@ -116,7 +116,7 @@ const formatTitle = title => {
   }
   // replace underscores and hyphens with spaces, plus starting weight integers
   // then make title case
-  return titleCase(title.replace(/[-_]/g, ' ').replace(/^([0-9]+)/g, '-'));
+  return title ? titleCase(title.replace(/[-_]/g, ' ').replace(/^([0-9]+)/g, '-')) : '';
 };
 
 module.exports = {

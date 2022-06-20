@@ -109,9 +109,15 @@ exports.onRouteUpdate = () => {
     searchBar.Initialize();
   }
   /* Update visually hidden classes when JS enabled */
-  document.getElementById('search-bar-wrapper').classList.remove('govuk-visually-hidden');
-  document.getElementById('sitemap-header-link').classList.add('govuk-visually-hidden');
-  document.getElementById('sitemap-sidebar-link').classList.add('govuk-visually-hidden');
+  if (document.getElementById('search-bar-wrapper')) {
+    document.getElementById('search-bar-wrapper').classList.remove('govuk-visually-hidden');
+  }
+  if (document.getElementById('sitemap-header-link')) {
+    document.getElementById('sitemap-header-link').classList.add('govuk-visually-hidden');
+  }
+  if (document.getElementById('sitemap-sidebar-link')) {
+    document.getElementById('sitemap-sidebar-link').classList.add('govuk-visually-hidden');
+  }
   Array.from(document.querySelectorAll('.gatsby-code-button-container')).map(e => e.classList.remove('govuk-visually-hidden'));
   /* Add smooth scroll to anchors on the page */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {

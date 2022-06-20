@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
 import { TreeView } from '@progress/kendo-react-treeview';
+import _ from 'lodash';
 
 import {
   persistToLocalStorage,
@@ -241,7 +242,13 @@ class NavTree extends Component {
       ...item,
     };
 
+    node.items = this.sortByItems(node.items);
+
     return actions.reduce((mutatedNode, fn) => fn(mutatedNode), node);
+  }
+
+  sortByItems(arr) {
+    return _.sortBy(arr, item => item.items.length > 0);
   }
 
   render() {
@@ -270,7 +277,7 @@ class NavTree extends Component {
         </Link>
 
         <TreeView
-          data={tree}
+          data={this.sortByItems(tree)}
           expandIcons={true}
           textField="text"
           expandField="opened"

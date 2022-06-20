@@ -17,8 +17,9 @@ title: Example Title
 ```toc
 # This code block gets replaced with the Table Of Contents
 ```
+## Initial Header
 ````
-3. Add post content 👌
+3. Add post content 👌. N.B. - **An initial header is needed if you are using the `toc` section.**
 4. FYI - you can name the directory and the filename anything. In the markdown matter, `title` drives the content in the UI and any nested directories within the `/wiki` folder drives the sidebar navigation tree to the left along with the site routing.
 
 ## Additional Tips & Tricks
