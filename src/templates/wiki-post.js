@@ -5,15 +5,10 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 
-const Template = ({
-  pageContext: {
-    breadcrumb: { crumbs }
-  },
-  data
-}) => {
+const Template = ({ pageContext, data }) => {
   const { markdownRemark: post } = data;
   return (
-    <Layout crumbs={crumbs} title={post.frontmatter.title}>
+    <Layout title={post.frontmatter.title} pageContext={pageContext}>
       <Helmet title={post.frontmatter.title} />
       <div>
         <h1>{post.frontmatter.title}</h1>

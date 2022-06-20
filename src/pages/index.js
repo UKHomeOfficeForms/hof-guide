@@ -4,8 +4,8 @@ import React from 'react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-const IndexPage = () => (
-  <Layout crumbs={[]} title="Home">
+const IndexPage = ({ pageContext }) => (
+  <Layout title="Home" pageContext={pageContext}>
     <SEO title="Home" keywords={[`home office forms`, `form builder`, `hof`, 'govuk form']} />
     <h1>
       Welcome to the HOF Guide{' '}

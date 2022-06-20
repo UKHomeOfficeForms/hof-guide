@@ -9,13 +9,12 @@ import Header from './header';
 import Footer from './footer';
 import Breadcrumb from './breadcrumb';
 
-import '@progress/kendo-theme-default/dist/all.css';
 import '../stylesheets/govuk.scss';
 import '../stylesheets/layout-custom.scss';
 import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
-const Layout = ({ children, crumbs, title }) => (
+const Layout = ({ children, title, pageContext }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -38,7 +37,9 @@ const Layout = ({ children, crumbs, title }) => (
               </nav>
             </div>
           </div>
-          <div className="main-content"><div className="page-content"><Breadcrumb crumbs={crumbs} title={title}/>{children}<hr/></div>
+          <div className="main-content"><div className="page-content">
+            <Breadcrumb crumbs={pageContext.breadcrumb.crumbs} title={title}/>{children}<hr/>
+          </div>
           <Footer/>
           </div>
         </main>
