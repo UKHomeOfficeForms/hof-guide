@@ -97,6 +97,7 @@ module.exports = Object.assign({}, config.gatsbyConfig, {
          {
            resolve: 'gatsby-remark-code-buttons',
            options: {
+             buttonContainerClass: 'govuk-visually-hidden',
              buttonText: `Copy ›`,
              tooltipText: `Copy to clipboard`,
              toasterText: 'Copied!'

@@ -96,7 +96,7 @@ class SearchBar {
 exports.onRouteUpdate = () => {
   /** The ContentScrollButton object is created */
   document.documentElement.classList.remove('no-js');
-  
+
   const searchbarInputElement = document.getElementById("app-site-search__input");
   const searchBar = new SearchBar(searchbarInputElement);
   const contentScrollButton = new ContentScrollButton();
@@ -112,6 +112,7 @@ exports.onRouteUpdate = () => {
   document.getElementById('search-bar-wrapper').classList.remove('govuk-visually-hidden');
   document.getElementById('sitemap-header-link').classList.add('govuk-visually-hidden');
   document.getElementById('sitemap-sidebar-link').classList.add('govuk-visually-hidden');
+  Array.from(document.querySelectorAll('.gatsby-code-button-container')).map(e => e.classList.remove('govuk-visually-hidden'));
   /* Add smooth scroll to anchors on the page */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
