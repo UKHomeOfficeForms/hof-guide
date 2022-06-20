@@ -271,6 +271,7 @@ class NavTree extends Component {
 
         <TreeView
           data={tree}
+          expandIcons={true}
           textField="text"
           expandField="opened"
           itemRender={NavItem}
