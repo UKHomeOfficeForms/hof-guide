@@ -109,9 +109,15 @@ exports.onRouteUpdate = () => {
     searchBar.Initialize();
   }
   /* Update visually hidden classes when JS enabled */
-  document.getElementById('search-bar-wrapper').classList.remove('govuk-visually-hidden');
-  document.getElementById('sitemap-header-link').classList.add('govuk-visually-hidden');
-  document.getElementById('sitemap-sidebar-link').classList.add('govuk-visually-hidden');
+  if (document.getElementById('search-bar-wrapper')) {
+    document.getElementById('search-bar-wrapper').classList.remove('govuk-visually-hidden');
+  }
+  if (document.getElementById('sitemap-header-link')) {
+    document.getElementById('sitemap-header-link').classList.add('govuk-visually-hidden');
+  }
+  if (document.getElementById('sitemap-sidebar-link')) {
+    document.getElementById('sitemap-sidebar-link').classList.add('govuk-visually-hidden');
+  }
   Array.from(document.querySelectorAll('.gatsby-code-button-container')).map(e => e.classList.remove('govuk-visually-hidden'));
   /* Add smooth scroll to anchors on the page */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -122,5 +128,22 @@ exports.onRouteUpdate = () => {
         behavior: 'smooth'
       });
     });
+  });
+  /* If JS enabled nav directory links hidden for directory spans with click reveal behaviour */
+  Array.from(document.querySelectorAll('.nav-directory-container')).map(dir => {
+    var subDirEle = dir.getElementsByClassName('nav-directory-subdir')[0];
+    var dirLink = dir.getElementsByClassName('nav-directory-link')[0];
+    var dirSpan = dir.getElementsByClassName('nav-directory-span')[0];
+
+    dirLink.classList.add('govuk-visually-hidden');
+    dirSpan.classList.remove('govuk-visually-hidden');
+    subDirEle.style.display = 'none';
+
+    dir.addEventListener('click', e => {
+      setTimeout(() => {
+        subDirEle.style.display = subDirEle.style.display === 'none' ? 'block' : 'none';
+      }, 0);
+    });
+    return dir;
   });
 }

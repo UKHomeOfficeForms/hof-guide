@@ -7,7 +7,6 @@ import Layout from '../components/layout';
 import SiteTree from '../utils/generate-site-tree';
 
 const Template = ({ pageContext }) => {
-  const crumbs = pageContext.breadcrumb.crumbs;
   const siteTree = new SiteTree(pageContext);
   // use graphql to get all page links from site
   const { pages: { nodes } } = useStaticQuery(graphql`
@@ -37,7 +36,7 @@ const Template = ({ pageContext }) => {
   }
   // recursively format html based on navigation tree through all nested children
   return (
-    <Layout crumbs={crumbs} title={siteTree.pageTitle}>
+    <Layout title={siteTree.pageTitle} pageContext={pageContext}>
       <Helmet title={siteTree.pageTitle} />
       <div>
         <h1>{siteTree.pageTitle}</h1>
