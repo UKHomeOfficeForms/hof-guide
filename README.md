@@ -115,5 +115,7 @@ Upon getting the AVG alert, make the relevant Github Page exempt by selecting th
 ```
 Thank you for reporting this false positive.
 
-We have now cleared its reputation in our database based on the findings and removed the detection. This change may take up to 24 hours to take full effect. Please accept our apology for the inconvenience caused.
+We have now cleared its reputation in our database based on the findings and removed the detection.
+This change may take up to 24 hours to take full effect.
+Please accept our apology for the inconvenience caused.
 ```
