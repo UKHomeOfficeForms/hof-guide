@@ -180,8 +180,7 @@ module.exports = Object.assign({}, config.gatsbyConfig, {
          }
        ],
      },
-   },
-    'gatsby-plugin-offline',
+   }
     {
      resolve: `gatsby-plugin-breadcrumb`,
      options: {
