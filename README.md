@@ -103,12 +103,14 @@ It is unknown why this happens currently. However re-running `yarn run develop` 
 #### AVG Web Shield Issues
 It appears some Macs running AVG Web Shield receive an Anti-Phishing error when trying to access the deployed Github Page online. It appears Webpack Bundles sometimes trigger this meaning it blocks both this js file and any json/image resources from being cached. Historically this has happened to quite a few other Github Page static sites too. To workaround this you have two options:
 
-**Option 1 - address it as an individual**
+**OPTION 1 - ADDRESS IT AS AN INDIVIDUAL**
+
 Upon getting the AVG alert, make the relevant Github Page exempt by selecting the 3 dots icon `(...)` and selecting to make it exempt (see below). You can also follow AVG's documentation on ['Excluding certain files and sites from scanning'](https://support.avg.com/SupportArticleView?l=en&urlname=AVG-Antivirus-scan-exclusions).
 
 <img src="static/images/readme/avg-issue.png" width=40% title="AVG Issue" alt="AVG Issue"/>
 
-**Option 2 - address it for all users**
+**OPTION 2 - ADDRESS IT FOR ALL USERS**
+
 [Flag the url as a false positive with AVG](https://www.avg.com/en-ww/false-positive-file-form) so their anti-phishing feature whitelists your site via their remote API and thus any stakeholders running AVG on their device aren't flapped by this when checking out your docs. The HOF team did this and we can confirm an AVG support team corrected this within a couple of hours. Here is a reply from them for the reader's reference to confirm it can be resolved quickly and that any concerns around security are addressed:
 ```
 Thank you for reporting this false positive.
