@@ -138,6 +138,49 @@ module.exports = {
   }
 };
 ```
+### Validation behaviour
+We can configure custom validations as a behaviour using the ```validate``` method:
+```js:title=validation-behaviour.js
+module.exports = SuperClass => class extends SuperClass {
+  validate(req, res, next) {
+    if (req.form.values.email.toLowerCase() !== req.form.values.emailVerify.toLowerCase()) {
+      return next({
+        emailVerify: new this.ValidationError(
+          'emailVerify',
+          {
+            type: 'notSame'
+          }
+        ),
+        email: new this.ValidationError(
+          'email',
+          {
+            type: 'notSame'
+          }
+        )
+      });
+    } super.validate(req, res, next);
+    return next;
+  }
+};
+```
+The behaviour is applied to a step:
+```js:title=behaviour-in-step.js
+module.exports = {
+  steps: {
+    '/email': {
+      behaviours: [VerifyEmail],
+      fields: ['email', 'emailVerify'],
+    }
+  }
+};
+```
+
+The validation message is then set against the configured type in translations/validation.json:
+```json:title=validation.json
+"email": {
+  "notSame": "Your email addresses do not match"
+}
+```
 
 ### Completion behaviour
 
