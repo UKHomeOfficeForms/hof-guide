@@ -13,7 +13,7 @@ const IndexPage = () => (
         👋
       </span>
     </h1>
-    <p>This is site hosted by Github Pages for the Home Office Forms Framework.</p>
+    <p>This site is hosted by Github Pages for the Home Office Forms Framework.</p>
     <h2>Tips:</h2>
     <ul>
       <li>
