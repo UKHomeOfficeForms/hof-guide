@@ -1,7 +1,7 @@
 @import './variables';
 /* Side Nav Bar, Content & Search Bar */
 .main-content {
-  padding-left: 4.5rem;
+  padding-left: 2.5rem;
   margin-left: 13.5rem;
   margin-right: 7rem;
   margin-top: 3.76rem;
@@ -79,18 +79,14 @@
   margin-top: -2.5rem;
   z-index: 2;
 }
-.gatsby-code-button {
-
-}
+.gatsby-code-button {}
 .gatsby-code-button-icon {}
 .gatsby-code-button-toaster {}
 .gatsby-code-button-toaster-text {
   background-color: rgba(92, 158, 79, 0.5);
   width: 50%;
 }
-.gatsby-code-button .gatsby-code-button-icon {
-  vertical-align: middle;
-}
+
 /* Code Block Titles */
 .gatsby-code-title {
   margin-bottom: -0.6rem;
@@ -124,7 +120,6 @@
 }
 
 .nav-directory {
-  font-size: $sidebar-font-size;
   color: $link-color;
   margin: 0 0 0 -0.3rem;
   border-left: 5px solid transparent;
@@ -151,7 +146,6 @@
 }
 
 .table-of-contents {
-  font-size: $font-size;
   a {
     white-space: nowrap;
     text-decoration: none;
@@ -175,13 +169,10 @@
 
   ul li {
     :first-child {
-      font-size: $font-size;
-
       margin-top: -1rem;
     }
 
     ul li:last-child {
-      font-size: $font-size;
       margin-bottom: 1.2rem;
     }
   }
@@ -237,9 +228,7 @@
 code {
   white-space : pre-wrap !important;
 }
-p {
-  font-size: $font-size;
-}
+
 p code, li code {
   background: #eff1f2 !important;
   border: 1px $border-colour solid !important;
@@ -301,7 +290,6 @@ p code, li code {
 }
 
 .breadcrumb__link {
-  font-size: $font-size;
   &:hover {
     text-decoration: underline;
     color: $hover-text-color;
@@ -339,50 +327,4 @@ body {
 
 .app-site-search__option[aria-selected="true"] > .app-site-search--section {
   color: $searchbar-selected-color;
-}
-
-
-// Table styles
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 16px;
-  background-color: $light-grey-color;
-  border: 1px solid #d0d0d0;
-
-  th {
-    background-color: #f0f0f0;
-    border: 1px solid #d0d0d0;
-    padding: 8px;
-    text-align: left;
-    color: #333;
-  }
-
-  td {
-    padding: 8px;
-    border: 1px solid #d0d0d0;
-    color: #333;
-  }
-}
-
-
-
-// Blockquote styles
-blockquote {
-  background-color: $light-grey-color;
-  border-left: 2px solid #0077cc;
-  margin: 20px 0;
-  padding: 20px 10px;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-// Blockquote cite styles
-blockquote footer {
-  margin-top: 10px;
-  text-align: right;
-  font-style: italic;
-  color: #999;
 }

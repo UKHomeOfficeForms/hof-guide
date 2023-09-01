@@ -12,7 +12,7 @@ title: Supported Services
 * [Future Borders & Immigration Service (FBIS) - (Home Office)](https://github.com/UKHomeOffice/fbis-ccf)
 * [General Register's Office (GRO) - (Home Office)](https://github.com/UKHomeOffice/gro)
 * [Modern Slavery National Referral Mechanism (NRM) - (Home Office)](https://github.com/UKHomeOffice/modern-slavery)
-* [Refugee Integration Loan (RIL) - (Home Office)](https://github.com/UKHomeOffice/refugee-integration-loan) 
+* [Refugee Integration Loan (RIL) - (Home Office)](https://gitlab.digital.homeoffice.gov.uk/cto/refugee-integration-loans) - **(Gitlab - Please request access)**
 * [Report Online Terrorist Material (ROTM) - (Home Office)](https://github.com/UKHomeOffice/rotm)
 * [UKVI Complaints (Home Office)](https://github.com/UKHomeOffice/Complaints)
 * [UKVI Ending A Tenancy (Home Office)](https://github.com/UKHomeOffice/end-tenancy)
