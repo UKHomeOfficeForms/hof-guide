@@ -16,8 +16,6 @@ The underlying controller that handles the form GET/POST pipeline consists of a 
 
 All of the pipeline methods are passed the request and response objects as arguments. Unless specified below, methods are also passed a callback as a third argument, which should be called with an `Error` if applicable.
 
-Certainly, here are the tables with more detailed descriptions and the type (POST or GET) included:
-
 ### GET Request Flow
 
 | Type          | Step          | Description                                       | Example                                                                                       |
