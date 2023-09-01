@@ -21,7 +21,8 @@ To a tag and publish a beta upgrade for redis this could be entered as: ```npm p
 
 Once published it should look like this:
 
-![](../images/wiki_how_tos/published-hof-beta.png)
+<img src="../images/wiki_how_tos/published-hof-beta.png" alt="Image Description" width="75%">
+
 
 ## Using beta version in a service
 
