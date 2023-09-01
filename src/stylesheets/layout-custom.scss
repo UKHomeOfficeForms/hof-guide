@@ -336,3 +336,33 @@ body {
 .app-site-search__option[aria-selected="true"] > .app-site-search--section {
   color: $searchbar-selected-color;
 }
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  background-color: #2d2d2d;
+
+  th {
+
+    background-color: lightgrey;
+    border-radius: 1px 1px ;
+    text-align: left;
+    padding: 8px;
+    color: black;
+  }
+
+  td {
+    padding: 8px;
+    border-top: 1px solid #999999;
+    border-right: 1px solid #999999;
+    color: white;
+  }
+
+  td:last-child{
+    border-right: hidden;
+  }
+
+}
+
