@@ -1,7 +1,7 @@
 @import './variables';
 /* Side Nav Bar, Content & Search Bar */
 .main-content {
-  padding-left: 2.5rem;
+  padding-left: 4.5rem;
   margin-left: 13.5rem;
   margin-right: 7rem;
   margin-top: 3.76rem;
@@ -120,6 +120,7 @@
 }
 
 .nav-directory {
+  font-size: $sidebar-font-size;
   color: $link-color;
   margin: 0 0 0 -0.3rem;
   border-left: 5px solid transparent;
@@ -146,6 +147,7 @@
 }
 
 .table-of-contents {
+  font-size: $font-size;
   a {
     white-space: nowrap;
     text-decoration: none;
@@ -169,10 +171,13 @@
 
   ul li {
     :first-child {
+      font-size: $font-size;
+
       margin-top: -1rem;
     }
 
     ul li:last-child {
+      font-size: $font-size;
       margin-bottom: 1.2rem;
     }
   }
@@ -228,7 +233,9 @@
 code {
   white-space : pre-wrap !important;
 }
-
+p {
+  font-size: $font-size;
+}
 p code, li code {
   background: #eff1f2 !important;
   border: 1px $border-colour solid !important;
@@ -290,6 +297,7 @@ p code, li code {
 }
 
 .breadcrumb__link {
+  font-size: $font-size;
   &:hover {
     text-decoration: underline;
     color: $hover-text-color;
