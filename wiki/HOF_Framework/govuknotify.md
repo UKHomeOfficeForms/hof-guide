@@ -32,7 +32,7 @@ Links:
 9. Select the permissions for the key 
 10. Store the key safely
 
-> Store the `Template ID` and `API key` as env values and use as needed in  appropriate in the application 
+> Store the `Template ID` and `API key` as env values and use as needed in the application 
 
 
 
