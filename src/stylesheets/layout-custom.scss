@@ -79,14 +79,18 @@
   margin-top: -2.5rem;
   z-index: 2;
 }
-.gatsby-code-button {}
+.gatsby-code-button {
+
+}
 .gatsby-code-button-icon {}
 .gatsby-code-button-toaster {}
 .gatsby-code-button-toaster-text {
   background-color: rgba(92, 158, 79, 0.5);
   width: 50%;
 }
-
+.gatsby-code-button .gatsby-code-button-icon {
+  vertical-align: middle;
+}
 /* Code Block Titles */
 .gatsby-code-title {
   margin-bottom: -0.6rem;
@@ -338,31 +342,47 @@ body {
 }
 
 
+// Table styles
 table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 16px;
-  background-color: #2d2d2d;
+  background-color: #f8f9fa; // Background color
+  border: 1px solid #d0d0d0; // Border color
 
   th {
-
-    background-color: lightgrey;
-    border-radius: 1px 1px ;
-    text-align: left;
+    background-color: #f0f0f0; // Header background color
+    border: 1px solid #d0d0d0; // Header border color
     padding: 8px;
-    color: black;
+    text-align: left;
+    color: #333; // Header text color
   }
 
   td {
     padding: 8px;
-    border-top: 1px solid #999999;
-    border-right: 1px solid #999999;
-    color: white;
+    border: 1px solid #d0d0d0; // Cell border color
+    color: #333; // Cell text color
   }
-
-  td:last-child{
-    border-right: hidden;
-  }
-
 }
 
+
+
+// Blockquote styles
+blockquote {
+  background-color: #f6f8fa; // Background color
+  border-left: 2px solid #0077cc; // Left border style
+  margin: 20px 0;
+  padding: 20px 10px; // Top and bottom padding added, left and right padding adjusted
+  color: #333; // Text color
+  display: flex; // Use flexbox for vertical centering
+  flex-direction: column; // Stack elements vertically
+  justify-content: center; // Vertically center the content
+}
+
+// Blockquote cite styles
+blockquote footer {
+  margin-top: 10px;
+  text-align: right;
+  font-style: italic;
+  color: #999; // Cite text color
+}
