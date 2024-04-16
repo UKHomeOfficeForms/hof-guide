@@ -12,6 +12,19 @@ Sometimes a developer may need to upgrade the HOF framework as an improvement or
 For the correct permissions ensure you are a member of hof organisation on https://www.npmjs.com/.
 You may also need to login to the terminal with your npm credentials before being able to publish.
 
+step 1 : npm login
+it will request for your username and password .
+step 2 : if you have a 403 forbidden message, copy this link and replace <username> with your username https://registry.npmmirror.com/-/user/org.couchdb.user:<username>.
+
+## How to deploy a beta version
+After we have implemented our new feature the first thing we do is to bump the version as we would also do for a regular release.
+
+It is crucial that we add <name-of-feature>-beta.0 at the end of your version. The .0 indicates which beta version it is. When we publish a new fix as beta, we will increment the .0 to .1 and so on.
+
+So our version should, for example, look like this: 20.4.0-notify-upgrade-8.0.0-beta.0.
+
+commit all changes and it is a good practise to always add a git tag to the beta version 
+  - example: git tag 20.4.0-notify-upgrade-8.0.0-beta.0
 
 ## Tagging a HOF release
 
