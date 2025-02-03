@@ -9,7 +9,7 @@
     "hof guide"
   ],
   "engines": {
-    "node": "^18.15.0"
+    "node": ">=20.0.0 <21.0.0"
   },
   "scripts": {
     "build": "gatsby build",
