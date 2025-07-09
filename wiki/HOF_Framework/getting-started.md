@@ -16,37 +16,25 @@ This documentation is written with the assumption that you are using the latest 
 
 hof is built in [node.js](https://nodejs.org/en/), and so you'll need that installed first. At present all versions 4 and above are supported, although it is recommended that you use the [latest LTS version](https://github.com/nodejs/LTS#lts-schedule).
 
-hof also requires npm version 3 or greater. You can check your installed version by running `npm -v` and update to the latest version by running `npm install -g npm@latest`.
+hof also requires npm version 3 or greater, and yarn. You can check your installed versions by running `npm -v` and `yarn -v` and update to the latest versions by running `npm install -g npm@latest` and `npm install -g yarn`.
 
 To run hof apps locally for development you will either need a local instance of redis running, or docker installed.
 
 * How to [install redis on OSX](https://medium.com/@petehouston/install-and-config-redis-on-mac-os-x-via-homebrew-eb8df9a4f298#.jcwwhv7oz)
 * How to [install docker on OSX](https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-for-mac)
 
-## Building your first hof form
-
-The fastest way to create a new hof app is to use the [hof command line generator](https://npmjs.com/hof-generator). This will automatically create a bare-bones hof form in a directory of your choice.
-
-### Installing the hof cli
-
-Install the cli from npm:
-
-```
-npm install -g hof-generator
-```
-
 ### Creating your first form
 
-```
-mkdir my-hof-form
-cd my-hof-form
-hof init
-```
+The fastest way to create a new hof app is to use the [hof skeleton app](https://github.com/UKHomeOfficeForms/hof-skeleton). This will provide you with a bare-bones hof form that you can build on top of.
 
-This will generate a brand new hof app in the directory you created.
+Clone the repo into a destination folder of your chosing: 
 
-You can then start your app by running `docker-compose up` or `npm start` (needs local redis instance).
+`git clone git@github.com:UKHomeOfficeForms/hof-skeleton.git`
 
-If you open [http://localhost:8080/my-hof-form](http://localhost:8080/my-hof-form) in a browser then you should see your app. It should look something like this:
+(full setup instructions can be found in the [hof-skeleton readme](https://github.com/UKHomeOfficeForms/hof-skeleton?tab=readme-ov-file#hof-skeleton))
 
-![](../images/getting-started.png)
+Install the initial dependencies `yarn install`
+
+You can then start your app by running `docker-compose up` or `yarn start:dev` (needs local redis instance).
+
+If you open [http://localhost:8080](http://localhost:8080) in a browser then you should see your app.
