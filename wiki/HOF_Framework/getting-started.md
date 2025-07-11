@@ -16,7 +16,9 @@ This documentation is written with the assumption that you are using the latest 
 
 hof is built in [node.js](https://nodejs.org/en/), and so you'll need that installed first. At present all versions 4 and above are supported, although it is recommended that you use the [latest LTS version](https://github.com/nodejs/LTS#lts-schedule).
 
-hof also requires npm version 3 or greater, and yarn. You can check your installed versions by running `npm -v` and `yarn -v` and update to the latest versions by running `npm install -g npm@latest` and `npm install -g yarn`.
+HOF requires Node.js version 10.22.1 or greater and npm version 6.14.0 or greater. While you can use either npm or yarn for package management, the test scripts for hof expect yarn to be available. 
+
+You can check your installed versions by running `node -v`, `npm -v`, and `yarn -v` and update to the latest versions by running `npm install -g npm@latest` and `npm install -g yarn`.
 
 To run hof apps locally for development you will either need a local instance of redis running, or docker installed.
 
